@@ -90,6 +90,7 @@ const SideBar = ({icon, useExitSidebar}) => {
                         setIsExitHidden(true)
                     }, 300)
                 } else {
+                    setIsUnCollapse(false)
                     setIsCollapsed(true)
                 }
             }}
