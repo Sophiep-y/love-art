@@ -26,10 +26,19 @@ const SideBar = ({icon, fromSidebarNav}) => {
         if (isNavigation) {
             setIsNavigation(false);
         } else {
-            setIsUnCollapse(!isUnCollapse);
-            setTimeout(() => {
+            if(isUnCollapse){
                 setIsCollapsed(!isCollapsed);
-            }, 0);
+                setTimeout(() => {
+                    setIsUnCollapse(!isUnCollapse);
+                }, 300);
+
+            }else{
+                setIsUnCollapse(!isUnCollapse);
+                setTimeout(() => {
+                    setIsCollapsed(!isCollapsed);
+                }, 0);
+
+            }
 
         }
     };
