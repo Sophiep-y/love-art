@@ -25,8 +25,13 @@ const SideBar = ({icon, useExitSidebar}) => {
     };
     const handleNavigation = (to) => {
         handleExtendClick();
-        navigate(to);
+        setTimeout(() => {
+            navigate(to);
+            toggleSideBar();
+        }, 300);
+
     };
+
 
     const onClickIcon = () => {
         if (useExitSidebar) {
