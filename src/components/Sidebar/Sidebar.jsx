@@ -10,11 +10,11 @@ const SideBar = ({icon, useExitSidebar}) => {
 
 
     const [isCollapsed, setIsCollapsed] = useState(true);
+    const [isUnCollapse, setIsUnCollapse] = useState(false);
     const [isNavigation, setIsNavigation] = useState(false);
 
 
-    const [isHidden, setIsHidden] = useState(useExitSidebar);
-
+    const [isExitHidden, setIsExitHidden] = useState(useExitSidebar);
     const [isExitNavigation, setIsExitNavigation] = useState(false);
     const [isExitCollapsed, setIsExitCollapsed] = useState(false);
 
@@ -26,7 +26,11 @@ const SideBar = ({icon, useExitSidebar}) => {
         if (isNavigation) {
             setIsNavigation(false);
         } else {
-            setIsCollapsed(!isCollapsed);
+            setIsUnCollapse(!isUnCollapse);
+            setTimeout(() => {
+                setIsCollapsed(!isCollapsed);
+            }, 0);
+
         }
     };
 
@@ -52,7 +56,7 @@ const SideBar = ({icon, useExitSidebar}) => {
             } else {
                 if (useExitSidebar) {
                     console.log("22")
-                    setIsHidden(!isHidden)
+                    setIsExitHidden(!isExitHidden)
                     setTimeout(() => {
                         setIsExitNavigation(true)
                     }, 300)
@@ -83,7 +87,7 @@ const SideBar = ({icon, useExitSidebar}) => {
                 if (useExitSidebar) {
                     setIsExitNavigation(false)
                     setTimeout(() => {
-                        setIsHidden(true)
+                        setIsExitHidden(true)
                     }, 300)
                 } else {
                     setIsCollapsed(true)
@@ -97,8 +101,8 @@ const SideBar = ({icon, useExitSidebar}) => {
                 useExitSidebar ?
                     isExitNavigation ?
                         `absolute bg-white z-10 shadow-2xl shadow-modalShadowColor  py-5 w-2/3 h-full top-0 pt-0.5 pl-5 left-1/3 transform transition-all duration-300 ease-in-out ${isExitCollapsed ? 'translate-x-full' : '-translate-x-0'}` :
-                        `${isHidden ? 'hidden' : 'block'}  absolute bg-white z-10 shadow-2xl shadow-modalShadowColor  py-5  w-full h-full top-0 pt-0.5 pl-5  left-0   transform transition-all duration-300 ease-in-out  translate-x-0 `
-                    : `absolute bg-white z-10 shadow-2xl shadow-modalShadowColor  py-5   ${isNavigation ? 'w-full' : 'w-2/3'}  h-full top-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'left-1/3'}  transform transition-all duration-300 ease-in-out ${isCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}`
+                        `${isExitHidden ? 'hidden' : 'block'}  absolute bg-white z-10 shadow-2xl shadow-modalShadowColor  py-5  w-full h-full top-0 pt-0.5 pl-5  left-0   transform transition-all duration-300 ease-in-out  translate-x-0 `
+                    : `${isUnCollapse ? 'block' : 'hidden'} absolute bg-white z-10 shadow-2xl shadow-modalShadowColor  py-5   ${isNavigation ? 'w-full' : 'w-2/3'}  h-full top-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'left-1/3'}  transform transition-all duration-300 ease-in-out ${isCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}`
             }
         >
             <div className="flex flex-col">
