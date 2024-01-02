@@ -49,7 +49,7 @@ const ProfilePage = () => {
         {/*</div>*/}
 
 
-        <Sidebar icon={<CrossIcon/>} useExitSidebar={true}/>
+        <Sidebar icon={<CrossIcon/>} fromSidebarNav={true}/>
 
 
       </div>

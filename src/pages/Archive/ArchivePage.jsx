@@ -43,7 +43,7 @@ const ArchivePage = () => {
         {/*  <CrossIcon />*/}
         {/*</div>*/}
 
-        <Sidebar icon={<CrossIcon/>} useExitSidebar={true}/>
+        <Sidebar icon={<CrossIcon/>} fromSidebarNav={true}/>
 
       </div>
       <div className="mt-60 p-5 flex justify-between">
