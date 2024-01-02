@@ -16,6 +16,7 @@ const SideBar = ({icon, useExitSidebar}) => {
     const [isHidden, setIsHidden] = useState(useExitSidebar);
 
     const [isExitNavigation, setIsExitNavigation] = useState(false);
+    const [isExitCollapsed, setIsExitCollapsed] = useState(false);
 
 
     const handleExtendClick = () => {
@@ -28,6 +29,8 @@ const SideBar = ({icon, useExitSidebar}) => {
             setIsCollapsed(!isCollapsed);
         }
     };
+
+
     const handleNavigation = (to) => {
         handleExtendClick();
         setTimeout(() => {
@@ -41,7 +44,11 @@ const SideBar = ({icon, useExitSidebar}) => {
     const onClickIcon = () => {
         try {
             if (isExitNavigation) {
-                navigate('/recommends');
+                setIsExitCollapsed(true);
+                setTimeout(() => {
+                    navigate('/recommends');
+                }, 300)
+
             } else {
                 if (useExitSidebar) {
                     console.log("22")
@@ -89,7 +96,7 @@ const SideBar = ({icon, useExitSidebar}) => {
             className={
                 useExitSidebar ?
                     isExitNavigation ?
-                        `absolute bg-white z-10 shadow-2xl shadow-modalShadowColor  py-5 w-2/3 h-full top-0 pt-0.5 pl-5 left-1/3 transform transition-all duration-300 ease-in-out -translate-x-0` :
+                        `absolute bg-white z-10 shadow-2xl shadow-modalShadowColor  py-5 w-2/3 h-full top-0 pt-0.5 pl-5 left-1/3 transform transition-all duration-300 ease-in-out ${isExitCollapsed ? 'translate-x-full' : '-translate-x-0'}` :
                         `${isHidden ? 'hidden' : 'block'}  absolute bg-white z-10 shadow-2xl shadow-modalShadowColor  py-5  w-full h-full top-0 pt-0.5 pl-5  left-0   transform transition-all duration-300 ease-in-out  translate-x-0 `
                     : `absolute bg-white z-10 shadow-2xl shadow-modalShadowColor  py-5   ${isNavigation ? 'w-full' : 'w-2/3'}  h-full top-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'left-1/3'}  transform transition-all duration-300 ease-in-out ${isCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}`
             }
