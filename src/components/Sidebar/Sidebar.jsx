@@ -5,7 +5,7 @@ import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {HamburgerIcon} from "../../assets/svg";
 
-const SideBar = ({icon, useExitSidebar}) => {
+const SideBar = ({icon, fromSidebarNav}) => {
     const navigate = useNavigate();
 
 
@@ -14,9 +14,9 @@ const SideBar = ({icon, useExitSidebar}) => {
     const [isNavigation, setIsNavigation] = useState(false);
 
 
-    const [isExitHidden, setIsExitHidden] = useState(useExitSidebar);
-    const [isExitNavigation, setIsExitNavigation] = useState(false);
-    const [isExitCollapsed, setIsExitCollapsed] = useState(false);
+    const [isSidebarHidden, setIsSidebarHidden] = useState(fromSidebarNav);
+    const [isSidebarNavigation, setIsSidebarNavigation] = useState(false);
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
 
     const handleExtendClick = () => {
@@ -47,18 +47,18 @@ const SideBar = ({icon, useExitSidebar}) => {
 
     const onClickIcon = () => {
         try {
-            if (isExitNavigation) {
-                setIsExitCollapsed(true);
+            if (isSidebarNavigation) {
+                setIsSidebarCollapsed(true);
                 setTimeout(() => {
                     navigate('/recommends');
                 }, 300)
 
             } else {
-                if (useExitSidebar) {
+                if (fromSidebarNav) {
                     console.log("22")
-                    setIsExitHidden(!isExitHidden)
+                    setIsSidebarHidden(!isSidebarHidden)
                     setTimeout(() => {
-                        setIsExitNavigation(true)
+                        setIsSidebarNavigation(true)
                     }, 300)
 
                 } else {
@@ -80,14 +80,14 @@ const SideBar = ({icon, useExitSidebar}) => {
             {icon ?? <HamburgerIcon/>}
         </div>
         {/*overlay*/}
-        {(!isCollapsed || isExitNavigation) ? <div
+        {(!isCollapsed || isSidebarNavigation) ? <div
             className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-10"
 
             onClick={() => {
-                if (useExitSidebar) {
-                    setIsExitNavigation(false)
+                if (fromSidebarNav) {
+                    setIsSidebarNavigation(false)
                     setTimeout(() => {
-                        setIsExitHidden(true)
+                        setIsSidebarHidden(true)
                     }, 300)
                 } else {
                     setIsUnCollapse(false)
@@ -98,13 +98,7 @@ const SideBar = ({icon, useExitSidebar}) => {
 
         {/*sidebar*/}
         <div
-            className={
-                useExitSidebar ?
-                    isExitNavigation ?
-                        `absolute bg-white z-10 shadow-2xl shadow-modalShadowColor  py-5 ${isNavigation ? 'w-full' : 'w-2/3'} h-full top-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'left-1/3'} transform transition-all duration-300 ease-in-out ${isExitCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}` :
-                        `${isExitHidden ? 'hidden' : 'block'}  absolute bg-white z-10 shadow-2xl shadow-modalShadowColor  py-5  w-full h-full top-0 pt-0.5 pl-5  left-0   transform transition-all duration-300 ease-in-out  translate-x-0 `
-                    : `${isUnCollapse ? 'block' : 'hidden'} absolute bg-white z-10 shadow-2xl shadow-modalShadowColor  py-5   ${isNavigation ? 'w-full' : 'w-2/3'}  h-full top-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'left-1/3'}  transform transition-all duration-300 ease-in-out ${isCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}`
-            }
+            className={fromSidebarNav ? isSidebarNavigation ? `absolute bg-white z-10 shadow-2xl shadow-modalShadowColor  py-5 ${isNavigation ? 'w-full' : 'w-2/3'} h-full top-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'left-1/3'} transform transition-all duration-300 ease-in-out ${isSidebarCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}` : `${isSidebarHidden ? 'hidden' : 'block'}  absolute bg-white z-10 shadow-2xl shadow-modalShadowColor  py-5  w-full h-full top-0 pt-0.5 pl-5  left-0   transform transition-all duration-300 ease-in-out  translate-x-0 ` : `${isUnCollapse ? 'block' : 'hidden'} absolute bg-white z-10 shadow-2xl shadow-modalShadowColor  py-5   ${isNavigation ? 'w-full' : 'w-2/3'}  h-full top-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'left-1/3'}  transform transition-all duration-300 ease-in-out ${isCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}`}
         >
             <div className="flex flex-col">
                 {menuItem?.map((item, _) => (<span
@@ -117,7 +111,7 @@ const SideBar = ({icon, useExitSidebar}) => {
             <div
                 className="absolute top-4 right-4 cursor-pointer"
                 onClick={(e) => {
-                    isExitNavigation ? onClickIcon() : toggleSideBar();
+                    isSidebarNavigation ? onClickIcon() : toggleSideBar();
                 }}
             >
                 <CrossIcon/>
