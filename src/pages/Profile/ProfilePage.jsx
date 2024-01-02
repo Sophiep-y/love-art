@@ -5,6 +5,7 @@ import { CrossIcon } from "../../assets/svg/cross-icon";
 import { useNavigate } from "react-router-dom";
 import Table from "./Table";
 import Grid from "./Grid";
+import Sidebar from "../../components/Sidebar/Sidebar";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const ProfilePage = () => {
   return (
     <PrivateLayout pageTitle="Profile" noHeader footer>
       <div className="flex justify-between items-center p-5">
-        <span className="text-6xl text-black uppercase">Profile</span>
+        <span className="uppercase text-primary text-6xl cursor-pointer font-extralight">Profile</span>
         <div className="flex justify-between w-3/5">
           {salesData?.map((item) => (
             <div className="flex flex-col">
@@ -40,12 +41,17 @@ const ProfilePage = () => {
             </div>
           ))}
         </div>
-        <div
-          className="flex w-16 cursor-pointer"
-          onClick={() => navigate("/recommends")}
-        >
-          <CrossIcon />
-        </div>
+        {/*<div*/}
+        {/*  className="flex w-16 cursor-pointer"*/}
+        {/*  onClick={() => navigate("/recommends")}*/}
+        {/*>*/}
+        {/*  <CrossIcon />*/}
+        {/*</div>*/}
+
+
+        <Sidebar icon={<CrossIcon/>}  useExitSidebar={true}/>
+
+
       </div>
       <div className="mt-60 p-5 flex justify-between">
         <div>
