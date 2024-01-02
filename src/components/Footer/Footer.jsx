@@ -2,13 +2,15 @@ import React from "react";
 import { footerContent } from "./content";
 import { Logo } from "../../assets/svg";
 
-export const Footer = ({ footer, absolute }) => {
+export const Footer = ({ footer, absolute , sticky=true}) => {
   return (
     <footer
       className={`${
         absolute
-          ? "absolute bg-white bottom-0 flex justify-between"
-          : "flex justify-between bottom-0 left-4 sticky bg-white"
+          ? "absolute bg-white bottom-0 flex justify-between mb-4"
+          :
+            sticky? `flex justify-between bottom-0 left-4 sticky bg-white mb-4`:
+            `flex justify-between bottom-0 left-4 bg-white mb-4`
       }`}
     >
       {footer && <Logo />}

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Table from "./Table";
 import Grid from "./Grid";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import {Footer} from "../../components/Footer/Footer";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
@@ -26,7 +27,8 @@ const ProfilePage = () => {
     setSelectedCategory(value);
   };
   return (
-    <PrivateLayout pageTitle="Profile" noHeader footer>
+    <PrivateLayout pageTitle="Profile" noHeader footer footer_on_stick={false} >
+
       <div className="flex justify-between items-center p-5">
         <span className="text-6xl text-black uppercase">Profile</span>
         <div className="flex justify-between w-3/5">
@@ -50,9 +52,9 @@ const ProfilePage = () => {
 
 
         <Sidebar icon={<CrossIcon/>} fromSidebarNav={true}/>
-
-
       </div>
+
+
       <div className="mt-60 p-5 flex justify-between">
         <div>
         {show && (
@@ -121,6 +123,7 @@ const ProfilePage = () => {
         </div>
         <div className="w-16"></div>
       </div>
+
     </PrivateLayout>
   );
 };

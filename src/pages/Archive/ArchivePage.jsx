@@ -27,7 +27,7 @@ const ArchivePage = () => {
     setSelectedCategory(value);
   };
   return (
-    <PrivateLayout pageTitle="Archive" noHeader footer>
+    <PrivateLayout pageTitle="Archive" noHeader footer footer_on_stick={false}>
       <div className="flex justify-between items-center p-5">
         <span className="text-6xl text-black uppercase">Archive</span>
         <div className="flex justify-between w-3/5">
