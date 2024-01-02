@@ -5,6 +5,7 @@ import { CrossIcon } from "../../assets/svg/cross-icon";
 import { useNavigate } from "react-router-dom";
 import Table from "./Table";
 import Grid from "./Grid";
+import Sidebar from "../../components/Sidebar/Sidebar";
 
 const ArchivePage = () => {
   const navigate = useNavigate();
@@ -35,12 +36,15 @@ const ArchivePage = () => {
             page is and what it features etc.
           </span>
         </div>
-        <div
-          className="flex w-16 cursor-pointer"
-          onClick={() => navigate("/recommends")}
-        >
-          <CrossIcon />
-        </div>
+        {/*<div*/}
+        {/*  className="flex w-16 cursor-pointer"*/}
+        {/*  onClick={() => navigate("/recommends")}*/}
+        {/*>*/}
+        {/*  <CrossIcon />*/}
+        {/*</div>*/}
+
+        <Sidebar icon={<CrossIcon/>} useExitSidebar={true}/>
+
       </div>
       <div className="mt-60 p-5 flex justify-between">
         <div>
