@@ -72,6 +72,17 @@ const SideBar = ({icon, useExitSidebar}) => {
         </div>
         {(!isCollapsed || isExitNavigation) ? <div
             className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-10"
+
+            onClick={() => {
+                if (useExitSidebar) {
+                    setIsExitNavigation(false)
+                    setTimeout(() => {
+                        setIsHidden(true)
+                    }, 300)
+                } else {
+                    setIsCollapsed(true)
+                }
+            }}
         ></div> : null}
 
         <div
