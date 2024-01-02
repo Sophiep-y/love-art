@@ -28,17 +28,17 @@ const ProfilePage = () => {
   return (
     <PrivateLayout pageTitle="Profile" noHeader footer>
       <div className="flex justify-between items-center p-5">
-        <span className="uppercase text-primary text-6xl cursor-pointer font-extralight">Profile</span>
+        <span className="text-6xl text-black uppercase">Profile</span>
         <div className="flex justify-between w-3/5">
           {salesData?.map((item) => (
-            <div className="flex flex-col">
+              <div className="flex flex-col">
               <span className="uppercase text-primary font-normal text-sm ">
                 {item?.title}
               </span>
-              <span className="text-black font-normal text-sm ">
+                <span className="text-black font-normal text-sm ">
                 {item?.value}
               </span>
-            </div>
+              </div>
           ))}
         </div>
         {/*<div*/}
@@ -49,13 +49,13 @@ const ProfilePage = () => {
         {/*</div>*/}
 
 
-        <Sidebar icon={<CrossIcon/>}  useExitSidebar={true}/>
+        <Sidebar icon={<CrossIcon/>} useExitSidebar={true}/>
 
 
       </div>
       <div className="mt-60 p-5 flex justify-between">
         <div>
-          {show && (
+        {show && (
             <div className="h-260 w-30% absolute">
               <img
                 className="h-full w-full object-cover"
