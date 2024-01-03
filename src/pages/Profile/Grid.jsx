@@ -79,9 +79,8 @@ const dummyData = [
 ];
 
 const Grid = ({isValueHidden}) => {
-    const imageUrl = "https://picsum.photos/400/260";
     return (
-        <div className="flex flex-wrap justify-stretch">
+        <div className="flex flex-wrap justify-start">
             {dummyData?.map((item, index) => (
                 <div
                     className={`${
@@ -124,7 +123,8 @@ const Grid = ({isValueHidden}) => {
 
                     {/* Details */}
                     <div className="flex justify-end items-end px-4 py-2">
-                        <p className="text-gray-600 font-semibold">DETAILS</p>
+                        <p className="text-primary transition duration-300 hover:text-black  font-semibold cursor-pointer">
+                            DETAILS</p>
                     </div>
                 </div>
             ))}
