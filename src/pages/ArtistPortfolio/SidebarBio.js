@@ -2,8 +2,6 @@ import {CrossIcon} from "../../assets/svg/cross-icon";
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {HamburgerIcon} from "../../assets/svg";
-import {menuItem} from "../../components/Header/menuItem";
-import {Footer} from "../../components/Footer/Footer";
 import {formatDateRange} from "./formatted_date";
 
 const SideBarArtistBio = ({icon}) => {
@@ -41,7 +39,6 @@ I've put them in order of my preference. Let me know asap if any are of interest
     const bioText = `
     Polo lives and works in Sydney. He received a Bachelor of Fine Arts (Hons. Class 1) and Master of Fine Arts from the College of Fine Arts, UNSW in 2007 and 2011 respectively. Recent solo exhibitions include soft secrets, Art on Paper, Galerie Transit (Brussels, 2022); will you, fill me, Yavuz Gallery (Singapore, 2022); of defence and doubt, Galerie Transit, Mechelen (Belgium, 2018); (These Things) Tell Me More About You, Mornington Peninsular Regional Gallery (Victoria, 2017); and What Goes On Here, Tom Polo for Spectrum Now, Art Gallery of New South Wales (Sydney, 2016). Selected group exhibitions include FREE/STATE, Adelaide Biennial of Australian Art, curated by Sebastian Goldspink, Art Gallery of South Australia (Adelaide, 2022); Ramsay Art Prize, Art Gallery of South Australia (Adelaide, 2021); Contact Us, Cement Fondu (Sydney, 2020); The National 2019: New Australian Art, Art Gallery of New South Wales (Sydney, 2019); Beyond Reason: exploring the logic of the imagination, QUT Art Museum (Brisbane, 2018); Meditation on a bone: Albert Tucker beyond the modern, curated by Glenn Barkley, Heide Museum of Modern Art (Melbourne, 2018); Primavera 2017, Museum of Contemporary Art Australia (Sydney, 2017); Looking at Me Through You, Campbelltown Arts Centre (Sydney, 2017); Painting. More Painting, Australian Centre for Contemporary Art (Melbourne, 2016) and Time & Vision: New work from Australian Artists, The Bargehouse (London, 2012).Polo was a recent finalist in the Geelong Contemporary Art Prize and the National Works on Paper Prize in 2022. He was a finalist in the Ramsay Art Prize, Australia’s premier prize for emerging artists (2021), and has been a finalist several times in the Sir John Sulman Art Prize (2021, 2020, 2017). Polo was the winner of the Brett Whiteley 
     `
-
 
 
     const toggleSideBar = () => {

@@ -1,6 +1,5 @@
-import React, {useState} from "react";
-import ImageWithLoading from "../../components/Image/image";
-import {useNavigate} from "react-router-dom";
+import React from "react";
+import ArtCard from "../../components/ArtCard/ArtCard";
 
 const dummyData = [
     {
@@ -11,6 +10,8 @@ const dummyData = [
         valueAud: 100,
         imageUrl: "https://picsum.photos/400/259",
         date: "2021-01-01",
+        material: "acrylic, Flashe and wax pastel on canvas",
+        dimensions: "100 x 100 cm",
     },
     {
         id: 2,
@@ -20,7 +21,8 @@ const dummyData = [
         valueAud: 120,
         imageUrl: "https://picsum.photos/400/260",
         date: "2021-01-01",
-
+        material: "acrylic, Flashe and wax pastel on canvas",
+        dimensions: "100 x 100 cm",
     },
     {
         id: 3,
@@ -30,7 +32,8 @@ const dummyData = [
         valueAud: 140,
         imageUrl: "https://picsum.photos/400/261",
         date: "2021-01-01",
-
+        material: "acrylic, Flashe and wax pastel on canvas",
+        dimensions: "100 x 100 cm",
     },
     {
         id: 4,
@@ -40,75 +43,19 @@ const dummyData = [
         valueAud: 140,
         imageUrl: "https://picsum.photos/400/258",
         date: "2021-01-01",
+        material: "acrylic, Flashe and wax pastel on canvas",
+        dimensions: "100 x 100 cm",
     },
 ];
 
 
-const formatDate = (dateString) => {
-    const options = {year: '2-digit', month: '2-digit', day: '2-digit'};
-    const formattedDate = new Date(dateString).toLocaleDateString('en-US', options);
-
-    // Extracting individual components and joining with dots
-    const [month, day, year] = formattedDate.split('/');
-    return `${month}.${day}.${year}`;
-};
-
 const Grid = () => {
-
-    const navigate = useNavigate();
-
-    const [hoveringItem, setHoveringItem] = useState(null);
 
 
     return (
         <div className="flex flex-wrap">
             {dummyData?.map((item, index) => (
-                <div
-                    className={`${
-                        index > 1 ? "mt-10" : "mt-0"
-                    } h-auto w-30% max-w-md mx-auto  bg-white overflow-hidden  ${hoveringItem === item.id ? 'grayscale' : ''}  `}
-                    onMouseEnter={
-                        () => setHoveringItem(item.id)
-                    }
-
-                    onMouseLeave={
-                        () => setHoveringItem(false)
-                    }
-
-                >
-                    {/* Image */}
-                    <div className="h-260 w-30% shadow-recommendation">
-                        {/*<img*/}
-                        {/*  className="h-full w-full object-cover"*/}
-                        {/*  src={item?.imageUrl}*/}
-                        {/*  alt="Card Image"*/}
-                        {/*/>*/}
-                        <ImageWithLoading
-                            src={item?.imageUrl}
-                            alt="Card Image"
-                        />
-                    </div>
-
-                    {/* Title */}
-                    <div>
-                        <h2 className="text-2xl font-light mt-4 cursor-pointer" onClick={() => {
-                            navigate(`/artist/${item.id}`);
-                        }}>{item?.artist}</h2>
-                    </div>
-
-                    {/* Details */}
-                    <div>
-                        <p className="text-primary text-2xl italic font-light">{item?.title}</p>
-                        <p className="text-black text-2xl font-light">{formatDate(item?.date)}</p>
-                    </div>
-
-                    {/* Details */}
-                    <div
-                        className={`flex justify-end items-end py-2  ${hoveringItem === item.id ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300 ease-in-out cursor-pointer`}>
-                        <p className="text-gray-600 font-semibold" onClick={() => {
-                        }}>DETAILS &#8594;</p>
-                    </div>
-                </div>
+                <ArtCard art={item} index={index}/>
             ))}
         </div>
     );

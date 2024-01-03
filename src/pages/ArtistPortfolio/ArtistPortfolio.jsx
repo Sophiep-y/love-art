@@ -8,8 +8,6 @@ import SideBarArtistBio from "./SidebarBio";
 import {formatDateRange} from "./formatted_date";
 
 
-
-
 const ArtistPortfolio = () => {
     const {id} = useParams();
 
@@ -30,13 +28,17 @@ const ArtistPortfolio = () => {
                     <h2 className="text-2xl font-light mt-4 cursor-pointer">{artist?.artist}</h2>
                     <p className="text-primary text-2xl italic font-light">{artist?.title}</p>
                     <p className="text-black font-light my-5">{dateFormatted[0]} &#x2E3A;<br/>{dateFormatted[1]}</p>
-                    <SideBarArtistBio icon={<div className='text-primary text-2xl cursor-pointer uppercase my-60 hover:text-black'>INFO</div>} />
+                    <SideBarArtistBio icon={<div
+                        className='text-primary text-2xl cursor-pointer uppercase my-60 hover:text-black'>INFO</div>}/>
                 </div>
                 <div className="w-3/5 mt-20">
                     <Grid/>
                 </div>
                 <Sidebar icon={<CrossIcon/>} fromSidebarNav={true}/>
             </div>
+
+            <div className='my-10'></div>
+
         </PrivateLayout>
     );
 
