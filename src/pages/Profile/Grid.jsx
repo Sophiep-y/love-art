@@ -77,7 +77,7 @@ const dummyData = [
     },
 ];
 
-const Grid = () => {
+const Grid = ({isValueHidden}) => {
     const imageUrl = "https://picsum.photos/400/260";
     return (
         <div className="flex flex-wrap">
@@ -102,16 +102,24 @@ const Grid = () => {
                     </div>
 
                     {/* Location, Cost, Value */}
-                    <div className="px-4">
+                    <div className="px-4 min-h-20">
                         <p className="text-black text-sm italic">{item?.title}</p>
-                        <p className="text-black">
-                            <span className="text-primary uppercase text-sm">Cost:</span> $
-                            {item?.costAud}
-                        </p>
-                        <p className="text-black">
-                            <span className="text-primary uppercase text-sm">Value:</span> $
-                            {item?.valueAud}
-                        </p>
+                        {
+                            (<div
+                                className={`${isValueHidden ? 'opacity-0 scale-0' : 'opacity-100 scale-100'} transition-opacity duration-300 ease-in-out`}>
+                                <p className="text-black">
+                            <span
+                                className="text-primary uppercase text-sm">Cost:</span> $
+                                    {item?.costAud}
+                                </p>
+                                <p className="text-black">
+                            <span
+                                className="text-primary uppercase text-sm">Value:</span> $
+                                    {item?.valueAud}
+                                </p>
+                            </div>)
+                        }
+
                     </div>
 
                     {/* Details */}
