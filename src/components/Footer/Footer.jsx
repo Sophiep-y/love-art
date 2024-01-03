@@ -3,7 +3,6 @@ import {Logo} from "../../assets/svg";
 
 export const Footer = ({footer, absolute, sticky = true, ref}) => {
 
-
     const links = [
         {
             title: "About",
