@@ -55,7 +55,7 @@ const Table = ({handleOnClickView, setImageSource}) => {
                                 onClick={() => handleOnClickView(row)}
                                 className="ml-2 text-blue-500 cursor-pointer"
                             >
-                  View &#8594;
+                  Details &#8594;
                 </span>
                         ) : (
                             "$" + row.valueAud
