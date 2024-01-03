@@ -22,17 +22,19 @@ const SideBar = ({icon, fromSidebarNav}) => {
     const handleExtendClick = () => {
         setIsNavigation(!isNavigation);
     };
+
+
     const toggleSideBar = () => {
         if (isNavigation) {
             setIsNavigation(false);
         } else {
-            if(isUnCollapse){
+            if (isUnCollapse) {
                 setIsCollapsed(!isCollapsed);
                 setTimeout(() => {
                     setIsUnCollapse(!isUnCollapse);
                 }, 300);
 
-            }else{
+            } else {
                 setIsUnCollapse(!isUnCollapse);
                 setTimeout(() => {
                     setIsCollapsed(!isCollapsed);
@@ -64,7 +66,6 @@ const SideBar = ({icon, fromSidebarNav}) => {
 
             } else {
                 if (fromSidebarNav) {
-                    console.log("22")
                     setIsSidebarHidden(!isSidebarHidden)
                     setTimeout(() => {
                         setIsSidebarNavigation(true)
@@ -73,7 +74,6 @@ const SideBar = ({icon, fromSidebarNav}) => {
                 } else {
                     toggleSideBar();
                 }
-                console.log('what')
             }
 
         } catch (e) {
@@ -81,13 +81,25 @@ const SideBar = ({icon, fromSidebarNav}) => {
         }
     };
 
+
+    const sidebarBaseClasses = "absolute bg-white z-10 shadow-2xl shadow-modalShadowColor py-5";
+    const transitionClasses = "transform transition-all duration-300 ease-in-out";
+
+    const sidebarClasses = fromSidebarNav ?
+        isSidebarNavigation ?
+            `${sidebarBaseClasses} ${isNavigation ? 'w-full' : 'w-2/3'} h-full top-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'left-1/3'} ${transitionClasses} ${isSidebarCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}` :
+            `${isSidebarHidden ? 'hidden' : 'block'} ${sidebarBaseClasses} py-5 w-full h-full top-0 pt-0.5 pl-5 left-0 ${transitionClasses} translate-x-0` : `${isUnCollapse ? 'block' : 'hidden'} ${sidebarBaseClasses} py-5 ${isNavigation ? 'w-full' : 'w-2/3'} h-full top-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'left-1/3'} ${transitionClasses} ${isCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}`;
+
+
     return (<div>
+        {/*open*/}
         <div onClick={(e) => {
             e.stopPropagation();
             onClickIcon();
         }} className="cursor-pointer">
             {icon ?? <HamburgerIcon/>}
         </div>
+
         {/*overlay*/}
         {(!isCollapsed || isSidebarNavigation) ? <div
             className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-10"
@@ -106,9 +118,9 @@ const SideBar = ({icon, fromSidebarNav}) => {
         ></div> : null}
 
         {/*sidebar*/}
-        <div
-            className={fromSidebarNav ? isSidebarNavigation ? `absolute bg-white z-10 shadow-2xl shadow-modalShadowColor  py-5 ${isNavigation ? 'w-full' : 'w-2/3'} h-full top-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'left-1/3'} transform transition-all duration-300 ease-in-out ${isSidebarCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}` : `${isSidebarHidden ? 'hidden' : 'block'}  absolute bg-white z-10 shadow-2xl shadow-modalShadowColor  py-5  w-full h-full top-0 pt-0.5 pl-5  left-0   transform transition-all duration-300 ease-in-out  translate-x-0 ` : `${isUnCollapse ? 'block' : 'hidden'} absolute bg-white z-10 shadow-2xl shadow-modalShadowColor  py-5   ${isNavigation ? 'w-full' : 'w-2/3'}  h-full top-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'left-1/3'}  transform transition-all duration-300 ease-in-out ${isCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}`}
-        >
+        <div className={sidebarClasses}>
+
+            {/*menus*/}
             <div className="flex flex-col">
                 {menuItem?.map((item, _) => (<span
                     onClick={() => handleNavigation(item?.to)}
@@ -117,6 +129,8 @@ const SideBar = ({icon, fromSidebarNav}) => {
                 {item?.title}
               </span>))}
             </div>
+
+            {/*close*/}
             <div
                 className="absolute top-4 right-4 cursor-pointer"
                 onClick={(e) => {
@@ -125,6 +139,8 @@ const SideBar = ({icon, fromSidebarNav}) => {
             >
                 <CrossIcon/>
             </div>
+
+            {/*footer*/}
             <Footer absolute/>
         </div>
     </div>);
