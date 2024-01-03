@@ -2,16 +2,11 @@ import "./App.css";
 import LoginPage from "./pages/Auth/Login";
 import Recommends from "./pages/Home/Recommends";
 import React from "react";
-import {
-    BrowserRouter,
-    createBrowserRouter,
-    Route,
-    RouterProvider,
-    Routes,
-} from "react-router-dom";
+import {BrowserRouter, Route, Routes,} from "react-router-dom";
 import ProfilePage from "./pages/Profile/ProfilePage";
 import ArchivePage from "./pages/Archive/ArchivePage";
 import ContactPage from "./pages/ContactPage/ContactPage";
+import ArtistPortfolio from "./pages/ArtistPortfolio/ArtistPortfolio";
 
 
 function App() {
@@ -24,6 +19,7 @@ function App() {
                 <Route path="/profile" element={<ProfilePage/>}/>
                 <Route path="/archive" element={<ArchivePage/>}/>
                 <Route path='/contact' element={<ContactPage/>}/>
+                <Route path='/artist/:id' element={<ArtistPortfolio/>}></Route>
             </Routes>
         </BrowserRouter>
     );
