@@ -9,6 +9,7 @@ const dummyData = [
         costAud: 50,
         valueAud: 100,
         imageUrl: "https://picsum.photos/400/259",
+        date: "2021-01-01",
     },
     {
         id: 2,
@@ -17,6 +18,8 @@ const dummyData = [
         costAud: 60,
         valueAud: 120,
         imageUrl: "https://picsum.photos/400/260",
+        date: "2021-01-01",
+
     },
     {
         id: 3,
@@ -25,6 +28,8 @@ const dummyData = [
         costAud: 70,
         valueAud: 140,
         imageUrl: "https://picsum.photos/400/261",
+        date: "2021-01-01",
+
     },
     {
         id: 4,
@@ -33,6 +38,8 @@ const dummyData = [
         costAud: 70,
         valueAud: 140,
         imageUrl: "https://picsum.photos/400/258",
+        date: "2021-01-01",
+
     },
 ];
 
@@ -48,7 +55,7 @@ const Grid = () => {
                 <div
                     className={`${
                         index > 1 ? "mt-10" : "mt-0"
-                    } h-auto w-30% max-w-md mx-auto  bg-white rounded-md overflow-hidden  ${hoveringItem === item.id? 'grayscale':''} `}
+                    } h-auto w-30% max-w-md mx-auto  bg-white overflow-hidden  ${hoveringItem === item.id? 'grayscale':''}  `}
                     onMouseEnter={
                         () => setHoveringItem(item.id)
                     }
@@ -59,7 +66,7 @@ const Grid = () => {
 
                 >
                     {/* Image */}
-                    <div className="h-260 w-30%">
+                    <div className="h-260 w-30% shadow-recommendation">
                         {/*<img*/}
                         {/*  className="h-full w-full object-cover"*/}
                         {/*  src={item?.imageUrl}*/}

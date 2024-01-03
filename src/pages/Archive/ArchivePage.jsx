@@ -96,9 +96,26 @@ const ArchivePage = () => {
                     ) : (
                         <Grid/>
                     )}
+
+
+                    <div className='flex justify-between text-primary text-2xl cursor-pointer px-2.5 uppercase my-10'>
+                        <button className=' hover:text-black'>
+                            &#x2B; Load More
+                        </button>
+                        <button className=' hover:text-black' onClick={() => {
+                            window.scrollTo({
+                                top: 0,
+                                behavior: "smooth"
+                            });
+                        }}>
+                            &#x2191; Top
+                        </button>
+                    </div>
                 </div>
                 <div className="w-16"></div>
             </div>
+
+
         </PrivateLayout>
     );
 };
