@@ -16,7 +16,7 @@ const dummyData = [
 
 ];
 
-const Table = ({handleOnClickView, setImageSource}) => {
+const Table = ({handleOnClickView}) => {
     const [hoveredRow, setHoveredRow] = useState(null);
     return (
         <table className="min-w-full border-b border-gray-200">

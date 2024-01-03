@@ -39,9 +39,18 @@ const dummyData = [
         valueAud: 140,
         imageUrl: "https://picsum.photos/400/258",
         date: "2021-01-01",
-
     },
 ];
+
+
+const formatDate = (dateString) => {
+    const options = { year: '2-digit', month: '2-digit', day: '2-digit' };
+    const formattedDate = new Date(dateString).toLocaleDateString('en-US', options);
+
+    // Extracting individual components and joining with dots
+    const [month, day, year] = formattedDate.split('/');
+    return `${month}.${day}.${year}`;
+};
 
 const Grid = () => {
 
@@ -80,20 +89,13 @@ const Grid = () => {
 
                     {/* Title */}
                     <div>
-                        <h2 className="text-xl font-bold mt-4">{item?.artist}</h2>
+                        <h2 className="text-2xl font-light mt-4">{item?.artist}</h2>
                     </div>
 
-                    {/* Location, Cost, Value */}
+                    {/* Details */}
                     <div>
-                        <p className="text-black text-sm italic">{item?.title}</p>
-                        <p className="text-black">
-                            <span className="text-primary uppercase text-sm">Cost:</span> $
-                            {item?.costAud}
-                        </p>
-                        <p className="text-black">
-                            <span className="text-primary uppercase text-sm">Value:</span> $
-                            {item?.valueAud}
-                        </p>
+                        <p className="text-primary text-2xl italic font-light">{item?.title}</p>
+                        <p className="text-black text-2xl font-light">{formatDate(item?.date)}</p>
                     </div>
 
                     {/* Details */}

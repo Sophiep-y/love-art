@@ -11,13 +11,26 @@ const ArchivePage = () => {
     const navigate = useNavigate();
     const [selected, setSelected] = useState("Grid");
     const [selectedCategory, setSelectedCategory] = useState("Collection");
+
+
     const [show, setShow] = useState(false);
-    const [imageSource, setImageSource] = useState("");
+    const [imageSource, setImageSource] = useState(null);
 
     const handleOnClickView = (row) => {
-        setShow(!show);
-        setImageSource(row?.imageUrl);
+        console.log(row)
+        if (row?.id === imageSource?.id) {
+            setShow(false);
+            setImageSource(null)
+            return;
+        }
+
+        setShow(true);
+        setImageSource({
+            imageUrl: row?.imageUrl,
+            id: row?.id
+        });
     };
+
 
     const handleSelected = (value) => {
         setSelected(value);
@@ -49,17 +62,9 @@ const ArchivePage = () => {
             <div className="mt-60 p-5 flex justify-between">
                 <div>
                     {show && (
-
-                        // <div className="h-260 w-30% absolute">
-                        //   <ImageWithLoading
-                        //       src={imageSource}
-                        //       alt="Card Image"
-                        //   />
-                        // </div>
-
-                        <div className="h-260 w-30% absolute">
+                        <div className="w-1/5 absolute">
                             <ImageWithLoading
-                                src={imageSource}
+                                src={imageSource.imageUrl}
                                 alt="Card Image"
                             />
                         </div>
@@ -91,7 +96,6 @@ const ArchivePage = () => {
                     {selected === "List" ? (
                         <Table
                             handleOnClickView={handleOnClickView}
-                            setImageSource={setImageSource}
                         />
                     ) : (
                         <Grid/>

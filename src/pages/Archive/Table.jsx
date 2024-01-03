@@ -2,18 +2,21 @@ import React, { useState } from "react";
 
 const dummyData = [
   {
+    id: 1,
     artist: "Artist 1",
     title: "Title 1",
     date: "17.11.22",
-    imageUrl: "https://picsum.photos/400/259",
+    imageUrl: "https://picsum.photos/400/900",
   },
   {
+    id: 2,
     artist: "Artist 2",
     title: "Title 2",
     date: "17.11.22",
     imageUrl: "https://picsum.photos/400/260",
   },
   {
+    id: 3,
     artist: "Artist 3",
     title: "Title 3",
     date: "17.11.22",
@@ -21,18 +24,21 @@ const dummyData = [
   },
 
   {
+    id: 4,
     artist: "Artist 1",
     title: "Title 1",
     date: "17.11.22",
     imageUrl: "https://picsum.photos/400/262",
   },
   {
+    id: 5,
     artist: "Artist 2",
     title: "Title 2",
     date: "17.11.22",
     imageUrl: "https://picsum.photos/400/263",
   },
   {
+    id: 6,
     artist: "Artist 3",
     title: "Title 3",
     date: "17.11.22",
@@ -40,37 +46,43 @@ const dummyData = [
   },
 
   {
+    id: 7,
     artist: "Artist 1",
     title: "Title 1",
     date: "17.11.22",
     imageUrl: "https://picsum.photos/400/265",
   },
   {
+    id: 8,
     artist: "Artist 2",
     title: "Title 2",
     date: "17.11.22",
     imageUrl: "https://picsum.photos/400/266",
   },
   {
+    id: 9,
     artist: "Artist 3",
     title: "Title 3",
     date: "17.11.22",
-    imageUrl: "https://picsum.photos/400/267",
+    imageUrl: "https://picsum.photos/400/900",
   },
 
   {
+    id: 10,
     artist: "Artist 1",
     title: "Title 1",
     date: "17.11.22",
     imageUrl: "https://picsum.photos/400/268",
   },
   {
+    id: 11,
     artist: "Artist 2",
     title: "Title 2",
     date: "17.11.22",
     imageUrl: "https://picsum.photos/400/269",
   },
   {
+    id: 12,
     artist: "Artist 3",
     title: "Title 3",
     date: "17.11.22",
@@ -78,7 +90,7 @@ const dummyData = [
   },
 ];
 
-const Table = ({ handleOnClickView, setImageSource }) => {
+const Table = ({ handleOnClickView }) => {
   const [hoveredRow, setHoveredRow] = useState(null);
 
   return (
