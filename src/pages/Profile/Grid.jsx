@@ -80,12 +80,12 @@ const dummyData = [
 
 const Grid = ({isValueHidden}) => {
     return (
-        <div className="flex flex-wrap justify-start">
+        <div className="flex flex-wrap justify-start items-start">
             {dummyData?.map((item, index) => (
                 <div
                     className={`${
                         index > 1 ? "mt-10" : "mt-0"
-                    } h-auto w-30% max-w-md mx-auto  bg-white rounded-md overflow-hidden `}
+                    } h-auto w-30% max-w-md bg-white items-start mr-auto `}
                 >
                     {/* Image */}
                     <div className="h-260 w-30%">
