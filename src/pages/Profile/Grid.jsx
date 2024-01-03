@@ -78,14 +78,14 @@ const dummyData = [
     },
 ];
 
-const Grid = ({isValueHidden}) => {
+const Grid = ({isValueHidden, isWishList = false, onEnquire, onRemove}) => {
     return (
         <div className="flex flex-wrap justify-start items-start">
             {dummyData?.map((item, index) => (
                 <div
                     className={`${
                         index > 1 ? "mt-10" : "mt-0"
-                    } h-auto w-30% max-w-md bg-white items-start mr-auto `}
+                    } h-auto w-30% max-w-md bg-white items-start mr-auto my-20`}
                 >
                     {/* Image */}
                     <div className="h-260 w-30%">
@@ -96,12 +96,12 @@ const Grid = ({isValueHidden}) => {
                     </div>
 
                     {/* Title */}
-                    <div className="px-4">
+                    <div className="">
                         <h2 className="text-xl font-bold mt-4">{item?.artist}</h2>
                     </div>
 
                     {/* Location, Cost, Value */}
-                    <div className="px-4 min-h-20">
+                    <div className=" min-h-20">
                         <p className="text-black text-sm italic">{item?.title}</p>
                         {
                             (<div
@@ -121,11 +121,35 @@ const Grid = ({isValueHidden}) => {
 
                     </div>
 
-                    {/* Details */}
-                    <div className="flex justify-end items-end px-4 py-2">
+
+
+                    {/* Enquire, Remove */}
+                    {isWishList ? (
+                            <div className="w-full">
+                                <div className=" py-2 w-full">
+                                    <button
+                                        className="  w-full bg-white hover:bg-primary text-black font-semibold hover:text-white py-2  border border-black hover:border-primary"
+                                    >
+                                        ENQUIRE
+                                    </button>
+                                </div>
+                                <div className="  py-2 w-full">
+                                    <button
+                                        className="  w-full bg-white hover:bg-primary text-black font-semibold hover:text-white py-2  border border-black hover:border-primary"
+                                    >
+                                        REMOVE
+                                    </button>
+                                </div>
+                            </div>
+
+
+                        )
+                        : (
+                        <div className="flex justify-end items-end  py-2">
                         <p className="text-primary transition duration-300 hover:text-black  font-semibold cursor-pointer">
-                            DETAILS</p>
-                    </div>
+                        DETAILS</p>
+                        </div>
+                        )}
                 </div>
             ))}
         </div>

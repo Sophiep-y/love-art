@@ -2,13 +2,11 @@ import React, {useState} from "react";
 import PrivateLayout from "../../components/Layout/PrivateLayout";
 import {salesData} from "./salesData";
 import {CrossIcon} from "../../assets/svg/cross-icon";
-import {useNavigate} from "react-router-dom";
 import Table from "./Table";
 import Grid from "./Grid";
 import Sidebar from "../../components/Sidebar/Sidebar";
 
 const ProfilePage = () => {
-    const navigate = useNavigate();
     const [selected, setSelected] = useState("Grid");
     const [selectedCategory, setSelectedCategory] = useState("Collection");
     const [show, setShow] = useState(false);
@@ -147,7 +145,7 @@ const ProfilePage = () => {
                             setImageSource={setImageSource}
                         />
                     ) : (
-                        <Grid isValueHidden={isValueHidden}/>
+                        <Grid isValueHidden={isValueHidden} isWishList={selectedCategory === 'Wishlist'}/>
                     )}
                 </div>
                 <div className="w-16"></div>
