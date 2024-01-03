@@ -2,9 +2,9 @@ import React from "react";
 import { footerContent } from "./content";
 import { Logo } from "../../assets/svg";
 
-export const Footer = ({ footer, absolute , sticky=true}) => {
+export const Footer = ({ footer, absolute , sticky=true, ref}) => {
   return (
-    <footer
+    <footer ref={ref}
       className={`${
         absolute
           ? "absolute bg-white bottom-0 flex justify-between mb-4"

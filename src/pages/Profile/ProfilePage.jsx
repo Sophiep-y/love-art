@@ -12,15 +12,28 @@ const ProfilePage = () => {
     const [selected, setSelected] = useState("Grid");
     const [selectedCategory, setSelectedCategory] = useState("Collection");
     const [show, setShow] = useState(false);
-    const [imageSource, setImageSource] = useState("");
+    const [imageSource, setImageSource] = useState(null);
 
 
     const [isValueHidden, setIsValueHidden] = useState(false);
 
+
     const handleOnClickView = (row) => {
-        setShow(!show);
-        setImageSource(row?.imageUrl);
+
+        if (row?.id === imageSource?.id) {
+            setShow(false);
+            setImageSource(null)
+            return;
+        }
+
+        setShow(true);
+        setImageSource({
+            imageUrl: row?.imageUrl,
+            id: row?.id
+        });
     };
+
+
     const handleSelected = (value) => {
         setSelected(value);
     };
@@ -28,9 +41,9 @@ const ProfilePage = () => {
     const handleSelectedCategory = (value) => {
         setSelectedCategory(value);
     };
+
     return (
         <PrivateLayout pageTitle="Profile" noHeader footer footer_on_stick={false}>
-
             <div className="flex justify-between items-center p-5">
                 <span className="text-6xl text-black uppercase">Profile</span>
                 <div className="flex justify-between w-3/5 ">
@@ -48,8 +61,6 @@ const ProfilePage = () => {
                                 </div>
                             )
                         )
-
-
                     }
 
                     <div className="flex flex-col cursor-pointer min-w-32" onClick={() => {
@@ -62,6 +73,7 @@ const ProfilePage = () => {
 
 
                 </div>
+
                 {/*<div*/}
                 {/*  className="flex w-16 cursor-pointer"*/}
                 {/*  onClick={() => navigate("/recommends")}*/}
@@ -72,15 +84,13 @@ const ProfilePage = () => {
 
                 <Sidebar icon={<CrossIcon/>} fromSidebarNav={true}/>
             </div>
-
-
-            <div className="mt-60 p-5 flex justify-between">
+            <div className="my-60 p-5 flex justify-between">
                 <div>
                     {show && (
-                        <div className="h-260 w-30% absolute">
+                        <div className="h-260 w-1/6 absolute">
                             <img
                                 className="h-full w-full object-cover"
-                                src={imageSource}
+                                src={imageSource.imageUrl}
                                 alt="Card Image"
                             />
                         </div>
@@ -142,6 +152,7 @@ const ProfilePage = () => {
                 </div>
                 <div className="w-16"></div>
             </div>
+
 
         </PrivateLayout>
     );
