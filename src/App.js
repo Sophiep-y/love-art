@@ -7,6 +7,7 @@ import ProfilePage from "./pages/Profile/ProfilePage";
 import ArchivePage from "./pages/Archive/ArchivePage";
 import ContactPage from "./pages/ContactPage/ContactPage";
 import ArtistPortfolio from "./pages/ArtistPortfolio/ArtistPortfolio";
+import SingleArt from "./pages/Art/SingleArt";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/archive" element={<ArchivePage/>}/>
                 <Route path='/contact' element={<ContactPage/>}/>
                 <Route path='/artist/:id' element={<ArtistPortfolio/>}></Route>
+                <Route path='/artwork/:id' element={<SingleArt/>}></Route>
             </Routes>
         </BrowserRouter>
     );

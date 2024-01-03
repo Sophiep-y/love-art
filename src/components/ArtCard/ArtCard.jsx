@@ -10,6 +10,14 @@ const ArtCard = ({art, index}) => {
 
     return (<div
         className={`${index > 1 ? "mt-10" : "mt-0"} h-auto w-30% max-w-md mx-auto  bg-white overflow-hidden`}
+
+        onClick={
+            () => {
+                navigate(
+                    '/artwork/1'
+                )
+            }
+        }
     >
 
         {/* Image */}
