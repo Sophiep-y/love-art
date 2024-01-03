@@ -4,6 +4,7 @@ import {HamburgerIcon, Logo, SearchIcon, UserIcon} from "../../assets/svg";
 import Title, {Position} from "./Title";
 import {useNavigate} from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
+import Search from "../Search/Search";
 
 const Header = ({title, pageName, exitingNavigation}) => {
 
@@ -14,7 +15,7 @@ const Header = ({title, pageName, exitingNavigation}) => {
 
         <div className="flex justify-between w-1/6">
             <div className="cursor-pointer">
-                <SearchIcon/>
+                <Search/>
             </div>
             <div className="cursor-pointer">
                 <UserIcon/>

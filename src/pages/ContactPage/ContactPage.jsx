@@ -92,9 +92,9 @@ const ContactPage = () => {
                                             value.map((categories) => {
                                                 return (
                                                     <div>
-                                                       <div className='uppercase text-primary'>
-                                                           {categories.title}
-                                                       </div>
+                                                        <div className='uppercase text-primary'>
+                                                            {categories.title}
+                                                        </div>
                                                         {
                                                             categories.subCategories.map((subCategories) => {
                                                                 return (
@@ -103,7 +103,7 @@ const ContactPage = () => {
                                                                             {subCategories.title}
 
                                                                         </div>
-                                                                        <div style={{whiteSpace:"pre-line"}}>
+                                                                        <div style={{whiteSpace: "pre-line"}}>
                                                                             {subCategories.description}
                                                                         </div>
                                                                     </div>
