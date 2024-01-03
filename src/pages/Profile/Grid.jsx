@@ -1,4 +1,5 @@
 import React from "react";
+import ImageWithLoading from "../../components/Image/image";
 
 const dummyData = [
     {
@@ -80,7 +81,7 @@ const dummyData = [
 const Grid = ({isValueHidden}) => {
     const imageUrl = "https://picsum.photos/400/260";
     return (
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap justify-stretch">
             {dummyData?.map((item, index) => (
                 <div
                     className={`${
@@ -89,8 +90,7 @@ const Grid = ({isValueHidden}) => {
                 >
                     {/* Image */}
                     <div className="h-260 w-30%">
-                        <img
-                            className="h-full w-full object-cover"
+                        <ImageWithLoading
                             src={item?.imageUrl}
                             alt="Card Image"
                         />

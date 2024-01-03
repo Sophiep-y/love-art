@@ -1,6 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
+import placeholder from '../../assets/place-holder.jpg';
 
-const ImageWithLoading = ({ src, alt }) => {
+const ImageWithLoading = ({src, alt}) => {
     const [loaded, setLoaded] = useState(false);
     const imageRef = useRef(null);
 
@@ -15,14 +16,16 @@ const ImageWithLoading = ({ src, alt }) => {
     return (
         <div>
             {!loaded ? (
-                <div>
-                    loading...
-                </div>
+                <img
+                    className='h-full w-full object-cover'
+                    src={placeholder}
+                    alt='Placeholder'
+                />
             ) : null}
             <img
                 className='h-full w-full object-cover'
                 src={src}
-                style={!loaded ? { visibility: 'hidden' } : {}}
+                style={!loaded ? {visibility: 'hidden'} : {}}
                 ref={imageRef}
                 onLoad={() => setLoaded(true)}
                 alt={alt}

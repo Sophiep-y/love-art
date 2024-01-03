@@ -8,7 +8,6 @@ const Carousel = ({contents}) => {
 
 
     const updateIndex = (newIndex) => {
-        console.log(newIndex);
         if (newIndex < 0) {
             newIndex = 0;
         } else if (newIndex >= contents.length) {
@@ -31,16 +30,16 @@ const Carousel = ({contents}) => {
     });
 
     return (<div>
-            <div className="overflow-hidden w-full flex flex-col justify-center items-center "
+            <div className=" w-full flex flex-col justify-center items-center overflow-x-auto"
                  style={{touchAction: 'pan-y'}}>
                 <div
                     className="whitespace-nowrap transition-transform duration-700 ease-in-out"
                     style={{
-                        transform: `translate(-${50* activeIndex/(contents.length-1)}%)`,
+                        transform: `translate(-${60* activeIndex/(contents.length-1)}%)`,
                     }}
                 >
                     {contents.map((item, index) => {
-                        return <CarouselItem handlers={handlers} item={item} width={"40%"} onClick={() => {
+                        return <CarouselItem handlers={handlers} item={item} width={"25%"} onClick={() => {
                             updateIndex(index);
                         }}/>;
                     })}
