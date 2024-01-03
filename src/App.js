@@ -11,6 +11,8 @@ import {
 } from "react-router-dom";
 import ProfilePage from "./pages/Profile/ProfilePage";
 import ArchivePage from "./pages/Archive/ArchivePage";
+import ContactPage from "./pages/ContactPage/ContactPage";
+
 
 function App() {
     return (
@@ -21,6 +23,7 @@ function App() {
                 <Route path="/recommends" element={<Recommends/>}/>
                 <Route path="/profile" element={<ProfilePage/>}/>
                 <Route path="/archive" element={<ArchivePage/>}/>
+                <Route path='/contact' element={<ContactPage/>}/>
             </Routes>
         </BrowserRouter>
     );
