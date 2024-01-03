@@ -1,4 +1,5 @@
 import React from "react";
+import ArtDetailSidebar from "../../pages/Home/ArtDetailSideBar";
 // .Carousel-item {
 //     display: inline-flex;
 //     align-items: center;
@@ -13,6 +14,7 @@ export const CarouselItem = ({item, width, onClick, handlers}) => {
             <div>
                 <div
                     className={`lightgray 50% / cover no-repeat] flex-shrink-0 w-[437.921px] h-[657.116px] shadow-recommendation bg-cover bg-[url('https://picsum.photos/400/260')] `}/>
+                <ArtDetailSidebar icon={<div>Details</div>}></ArtDetailSidebar>
             </div>
         </div>
     );
