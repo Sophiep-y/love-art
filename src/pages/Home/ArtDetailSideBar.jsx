@@ -148,7 +148,7 @@ const ArtDetailSidebar = ({icon}) => {
         <div onClick={(e) => {
             e.stopPropagation();
             onClickIcon();
-        }} className="cursor-pointer text-primary text-2xl uppercase my-60 hover:text-black">
+        }} className="cursor-pointer text-primary text-2xl uppercase hover:text-black">
             {icon ?? <HamburgerIcon/>}
         </div>
 
@@ -187,11 +187,6 @@ const ArtDetailSidebar = ({icon}) => {
                 </div>
                 {/*image*/}
                 <div className="shadow-recommendation mr-8 my-4">
-                    {/*<img*/}
-                    {/*  className="h-full w-full object-cover"*/}
-                    {/*  src={item?.imageUrl}*/}
-                    {/*  alt="Card Image"*/}
-                    {/*/>*/}
                     <ImageWithLoading
                         src={art?.imageUrl}
                         alt="Card Image"

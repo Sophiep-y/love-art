@@ -2,8 +2,9 @@ import ImageWithLoading from "../Image/image";
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import LoveButton from "../../assets/svg/love-button";
+import ArtDetailSidebar from "../../pages/Home/ArtDetailSideBar";
 
-const ArtCard = ({art, index}) => {
+const ArtCard = ({art, index, navigateToArt = true}) => {
     const navigate = useNavigate();
     const [isLoved, setIsLoved] = useState(false)
 
@@ -13,15 +14,16 @@ const ArtCard = ({art, index}) => {
 
         onClick={
             () => {
-                navigate(
-                    '/artwork/1'
-                )
+                if (navigateToArt)
+                    navigate(
+                        '/artwork/1'
+                    )
             }
         }
     >
 
         {/* Image */}
-        <div className="h-260 w-30% shadow-recommendation">
+        <div className=" w-30% shadow-recommendation">
             {/*<img*/}
             {/*  className="h-full w-full object-cover"*/}
             {/*  src={item?.imageUrl}*/}
@@ -68,9 +70,15 @@ const ArtCard = ({art, index}) => {
         <div
             className={`flex justify-between items-center py-2  cursor-pointer`}>
             <p className='text-black'>1000 AUD</p>
-            <p className="font-light hover:text-black text-primary " onClick={() => {
-            }}>DETAILS</p>
+
+            <ArtDetailSidebar icon={
+                <p className="font-light hover:text-black text-primary " onClick={() => {
+                }}>DETAILS
+                </p>
+            }></ArtDetailSidebar>
+
         </div>
+
 
     </div>)
 
