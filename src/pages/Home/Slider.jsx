@@ -95,9 +95,10 @@ const ActiveSlider = () => {
     const [activeIndex, setActiveIndex] = useState(1);
     const [swiper, setSwiper] = useState(null);
     return (
-        <div className=" items-center  justify-center flex-col ">
+        <div>
             <Swiper
                 onSwiper={setSwiper}
+                slidesPerView={'auto'}
                 initialSlide={1}
                 breakpoints={{
                     600: {
@@ -115,7 +116,7 @@ const ActiveSlider = () => {
                     enabled:true,
                     type:'custom'
                 }}
-                modules={[FreeMode,Pagination]}
+                modules={[Pagination]}
                 centeredSlides={true}
                 className="max-w-max"
                 onPaginationUpdate={(swiper) => {
@@ -136,7 +137,7 @@ const ActiveSlider = () => {
 
 
             </Swiper>
-            <div className="m-4">
+            <div className="m-4  bottom-0 absolute">
                 <span className="text-2xl font-light">{activeIndex + 1}</span> <span
                 className='text-solidLove text-2xl font-light'>{serviceData.length}</span>
             </div>
