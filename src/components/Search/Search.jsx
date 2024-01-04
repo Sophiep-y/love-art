@@ -1,5 +1,5 @@
 import {SearchIcon} from "../../assets/svg";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {CrossIcon} from "../../assets/svg/cross-icon";
 
 const dummyData = [
@@ -52,7 +52,7 @@ const Search = () => {
             {
                 isSearchActive && (
                     <div
-                        className="fixed top-0 left-0 w-full h-full bg-white bg-opacity-90 z-10"
+                        className={`fixed top-0 left-0 w-full h-full bg-white z-10 transition-all duration-300 ${isSearchActive ? 'bg-opacity-90' : 'bg-opacity-0'} ease-in-out`}
                     >
 
                         <div className="flex justify-start items-start h-screen">

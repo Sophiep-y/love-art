@@ -2,11 +2,13 @@ import {menuItem} from "../Header/menuItem";
 import {CrossIcon} from "../../assets/svg/cross-icon";
 import {Footer} from "../Footer/Footer";
 import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {HamburgerIcon} from "../../assets/svg";
 
 const SideBar = ({icon, fromSidebarNav}) => {
     const navigate = useNavigate();
+
+    const location = useLocation();
 
 
     const [isCollapsed, setIsCollapsed] = useState(true);
@@ -49,11 +51,17 @@ const SideBar = ({icon, fromSidebarNav}) => {
 
 
     const handleNavigation = (to) => {
-        handleExtendClick();
-        setTimeout(() => {
-            navigate(to);
-            toggleSideBar();
-        }, 300);
+        console.log(to)
+        console.log(location.pathname)
+
+
+        if (location.pathname !== to) {
+            handleExtendClick();
+            setTimeout(() => {
+                navigate(to);
+                toggleSideBar();
+            }, 300);
+        }
 
     };
 

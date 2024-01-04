@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from "react";
-import {HamburgerIcon, Logo, SearchIcon, UserIcon} from "../../assets/svg";
+import React from "react";
+import {Logo, UserIcon} from "../../assets/svg";
 
 import Title, {Position} from "./Title";
-import {useNavigate} from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import Search from "../Search/Search";
 
@@ -20,9 +19,7 @@ const Header = ({title, pageName, exitingNavigation}) => {
             <div className="cursor-pointer">
                 <UserIcon/>
             </div>
-            {/*<div onClick={toggleSideBar} className="cursor-pointer">*/}
-            {/*    <HamburgerIcon/>*/}
-            {/*</div>*/}
+
             <Sidebar/>
 
         </div>
