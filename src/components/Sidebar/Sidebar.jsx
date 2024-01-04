@@ -51,10 +51,6 @@ const SideBar = ({icon, fromSidebarNav}) => {
 
 
     const handleNavigation = (to) => {
-        console.log(to)
-        console.log(location.pathname)
-
-
         if (location.pathname !== to) {
             handleExtendClick();
             setTimeout(() => {

@@ -16,10 +16,10 @@ const dummyData = [
 
 ];
 
-const Table = ({handleOnClickView}) => {
+const Table = ({handleOnClickView, className}) => {
     const [hoveredRow, setHoveredRow] = useState(null);
     return (
-        <table className="min-w-full border-b border-gray-200">
+        <table className={`${className} min-w-full border-b border-gray-200`}>
             <thead>
             <tr>
                 <th className="py-3 text-left uppercase border-b-2 border-gray-300">

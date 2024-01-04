@@ -17,7 +17,7 @@ const ImageWithLoading = ({src, alt}) => {
         <div>
             {!loaded ? (
                 <img
-                    className='h-full w-full object-cover'
+                    className='h-full w-full object-cover animate-pulse'
                     src={placeholder}
                     alt='Placeholder'
                 />
