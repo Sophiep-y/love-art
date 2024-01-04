@@ -2,9 +2,8 @@ import ImageWithLoading from "../Image/image";
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import LoveButton from "../../assets/svg/love-button";
-import ArtDetailSidebar from "../../pages/Home/ArtDetailSideBar";
 
-const ArtCard = ({art, index, navigateToArt = true}) => {
+const ArtCard = ({art, index, navigateToArt = true, toggleSidebar}) => {
     const navigate = useNavigate();
     const [isLoved, setIsLoved] = useState(false)
 
@@ -12,14 +11,9 @@ const ArtCard = ({art, index, navigateToArt = true}) => {
     return (<div
         className={`${index > 1 ? "mt-10" : "mt-0"} h-auto w-30% max-w-md mx-auto  bg-white overflow-hidden`}
 
-        onClick={
-            () => {
-                if (navigateToArt)
-                    navigate(
-                        '/artwork/1'
-                    )
-            }
-        }
+        onClick={() => {
+            if (navigateToArt) navigate('/artwork/1')
+        }}
     >
 
         {/* Image */}
@@ -71,11 +65,12 @@ const ArtCard = ({art, index, navigateToArt = true}) => {
             className={`flex justify-between items-center py-2  cursor-pointer`}>
             <p className='text-black'>1000 AUD</p>
 
-            <ArtDetailSidebar icon={
-                <p className="font-light hover:text-black text-primary " onClick={() => {
-                }}>DETAILS
-                </p>
-            }></ArtDetailSidebar>
+            <div className='font-light hover:text-black text-primary' onClick={() => {
+                toggleSidebar({art: art})
+            }}>DETAILS
+
+
+            </div>
 
         </div>
 
