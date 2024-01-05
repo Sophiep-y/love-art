@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Logo = () => {
+export const Logo = ({className}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,6 +8,7 @@ export const Logo = () => {
       height="59"
       viewBox="0 0 234 59"
       fill="none"
+      className={className}
     >
       <path
         d="M148.022 3.02467L130.794 45.8833H133.616L139.078 32.1373H159.607L165.009 45.8833H167.83L150.903 3.02467H148.022ZM139.918 29.8563L149.462 5.6058H149.583L158.766 29.8563H139.918Z"

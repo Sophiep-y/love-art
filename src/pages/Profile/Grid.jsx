@@ -25,12 +25,10 @@ const dummyData = [{
     artist: "Artist 3", title: "Title 3", costAud: 70, valueAud: 140, imageUrl: "https://picsum.photos/400/260",
 },];
 
-const Grid = ({isValueHidden, isWishList = false, onEnquire, onRemove, className}) => {
-
-
+const Grid = ({isValueHidden, isWishList = false, onEnquire, onRemove, className, onDetail}) => {
     return (<div className={`flex flex-wrap ${className} `}>
         {dummyData?.map((item, index) => (<div
-            className={`${index > 1 ? "mt-20" : "mt-0"} h-auto w-30% max-w-md bg-white items-start mr-auto`}
+            className={`${index > 1 ? "mt-20" : "mt-10"} h-auto w-30% max-w-md bg-white items-start mr-auto`}
         >
             {/* Image */}
             <div className="h-260 w-30%">
@@ -78,17 +76,22 @@ const Grid = ({isValueHidden, isWishList = false, onEnquire, onRemove, className
                     </div>
                     <div className="  py-2 w-full">
                         <button
-                            className="  w-full bg-white hover:bg-primary text-black font-semibold hover:text-white py-2  border border-black hover:border-primary"
+                            className="w-full bg-white hover:bg-primary text-black font-semibold hover:text-white py-2  border border-black hover:border-primary"
                         >
                             REMOVE
                         </button>
                     </div>
                 </div>
+
                 <div
-                    className={`flex justify-end items-end  py-2 transition-opacity duration-500 ease-in  ${!isWishList ? ' opacity-100 scale-100' : ' opacity-0 scale-0 h-0'}`}>
-                    <p className="text-primary transition duration-300 hover:text-black  font-semibold cursor-pointer">
-                        DETAILS</p>
+
+                    onClick={() => onDetail({art: item})}
+                    className={`flex justify-end items-end  pb-4 transition-opacity duration-500 ease-in  ${!isWishList ? ' opacity-100 scale-100' : ' opacity-0 scale-0 h-0'}`}>
+                    <p className="text-primary transition duration-300 hover:text-black  text-base font-light cursor-pointer">
+                        VIEW DETAILS
+                    </p>
                 </div>
+
             </div>
         </div>))}
     </div>);

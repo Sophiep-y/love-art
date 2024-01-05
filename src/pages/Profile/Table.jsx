@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 const dummyData = [
     {
@@ -17,21 +17,28 @@ const dummyData = [
 ];
 
 const Table = ({handleOnClickView, className}) => {
+
+    let isMobile = window.innerWidth < 768;
+    useEffect(() => {
+        isMobile = window.innerWidth < 768;
+
+    });
     const [hoveredRow, setHoveredRow] = useState(null);
     return (
         <table className={`${className} min-w-full border-b border-gray-200`}>
-            <thead>
+            <thead className='text-primary font-light'>
             <tr>
                 <th className="py-3 text-left uppercase border-b-2 border-gray-300">
                     Artist
                 </th>
-                <th className="py-3 text-left uppercase border-b-2 border-gray-300">
-                    Title
-                </th>
-                <th className="py-3 text-left uppercase border-b-2 border-gray-300">
+                {!isMobile &&
+                    <th className="py-3 text-left uppercase border-b-2 border-gray-300">
+                        Title
+                    </th>}
+                <th className="py-3 text-right uppercase border-b-2 border-gray-300">
                     Cost AUD
                 </th>
-                <th className="py-3 text-left uppercase border-b-2 border-gray-300">
+                <th className="py-3 text-right uppercase border-b-2 border-gray-300">
                     Value AUD
                 </th>
             </tr>
@@ -46,10 +53,23 @@ const Table = ({handleOnClickView, className}) => {
                     onMouseEnter={() => setHoveredRow(index)}
                     onMouseLeave={() => setHoveredRow(null)}
                 >
-                    <td className="py-4">{row.artist}</td>
-                    <td className="py-4">{row.title}</td>
-                    <td className="py-4">${row.costAud}</td>
-                    <td className={`py-4`}>
+                    <td className="py-4">
+
+                        <div className='flex flex-col'>
+                           <div className="uppercase">
+                               {row.artist}
+                           </div>
+                            { isMobile && <div className='italic text-sm'>
+                                {row.title}
+                            </div>}
+                        </div>
+                    </td>
+
+                    {!isMobile &&
+                        <td className="py-4">{row.title}</td>}
+
+                    <td className="py-4 text-right">${row.costAud}</td>
+                    <td className={`py-4 text-right`}>
                         {hoveredRow === index ? (
                             <span
                                 onClick={() => handleOnClickView(row)}

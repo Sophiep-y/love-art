@@ -130,7 +130,7 @@ const SideBar = ({icon, fromSidebarNav, className}) => {
             <div className="flex flex-col">
                 {menuItem?.map((item, _) => (<span
                     onClick={() => handleNavigation(item?.to)}
-                    className="uppercase text-primary text-6xl cursor-pointer font-extralight hover:text-black"
+                    className="uppercase text-primary md:text-6xl text-5xl cursor-pointer font-extralight hover:text-black"
                 >
                 {item?.title}
               </span>))}

@@ -17,6 +17,7 @@ module.exports = {
         extend: {
             boxShadow: {
                 recommendation: "-10px 10px 20px -11px rgba(86, 86, 86, 0.60)",
+                values: "0px -6px 15px -8px rgba(0, 0, 0, 0.25)",
             }
         },
 

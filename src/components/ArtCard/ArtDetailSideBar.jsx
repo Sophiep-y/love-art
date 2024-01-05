@@ -1,4 +1,4 @@
-import {useState} from "react";
+import React, {useState} from "react";
 import ArtDetailSidebarStateLess from "./ArtSidebarStateless";
 
 
@@ -88,7 +88,7 @@ const ArtDetailSidebar = ({art, icon, showIcon = true}) => {
     const [isNavigation, setIsNavigation] = useState(false);
 
 
-    const toggleSideBar = () => {
+    const toggleSidebar = ({item}) => {
         if (isNavigation) {
             setIsNavigation(false);
         } else {
@@ -109,7 +109,17 @@ const ArtDetailSidebar = ({art, icon, showIcon = true}) => {
         }
     };
 
-    return (ArtDetailSidebarStateLess({art, icon, showIcon, isCollapsed, isUnCollapse, isNavigation, toggleSideBar,},));
+    return (
+        <ArtDetailSidebarStateLess
+            icon={icon}
+            art={art}
+            showIcon={showIcon}
+            isCollapsed={isCollapsed}
+            isUnCollapse={isUnCollapse}
+            isNavigation={isNavigation}
+            toggleSidebar={toggleSidebar}
+        ></ArtDetailSidebarStateLess>
+    )
 
 
 }
