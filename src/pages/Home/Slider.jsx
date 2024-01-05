@@ -152,11 +152,11 @@ const ActiveSlider = ({toggleSidebar}) => {
                 slidesPerView={'auto'}
                 initialSlide={1}
                 breakpoints={{
-                    600: {
+                    md: {
                         slidesPerView: 1,
                         spaceBetween: 15,
                     },
-                    700: {
+                    800: {
                         slidesPerView: 2.25,
                         spaceBetween: 50,
                     },
@@ -188,7 +188,7 @@ const ActiveSlider = ({toggleSidebar}) => {
                 }
             </Swiper>
 
-            <div className="lg:block hidden  m-4 bottom-0 left-0 fixed ">
+            <div className="md:block hidden  m-4 bottom-0 left-0 fixed ">
                 <span className=" text-2xl font-light">{activeIndex + 1}</span> <span
                 className='text-solidLove text-2xl font-light'>{serviceData.length}</span>
             </div>

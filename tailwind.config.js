@@ -2,6 +2,8 @@
 module.exports = {
     content: ["./public/index.html", "./src/**/*.{js,jsx,ts,tsx}"],
     theme: {
+
+
         colors: {
             primary: "#9E9E9E",
             black: "#000000",
@@ -17,6 +19,9 @@ module.exports = {
                 recommendation: "-10px 10px 20px -11px rgba(86, 86, 86, 0.60)",
             }
         },
+
     },
+
+
     plugins: [],
 };
