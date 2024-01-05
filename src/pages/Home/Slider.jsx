@@ -180,6 +180,7 @@ const ActiveSlider = ({toggleSidebar}) => {
                                             onClick={() => {
                                                 swiper.slideTo(index);
                                             }}
+                                            className='md:m-0 p-16'
                         >
                             <ArtCard art={item} navigateToArt={false} toggleSidebar={toggleSidebar}/>
                         </SwiperSlide>
@@ -187,8 +188,8 @@ const ActiveSlider = ({toggleSidebar}) => {
                 }
             </Swiper>
 
-            <div className="m-4 bottom-0 absolute">
-                <span className="text-2xl font-light">{activeIndex + 1}</span> <span
+            <div className="lg:block hidden  m-4 bottom-0 left-0 fixed ">
+                <span className=" text-2xl font-light">{activeIndex + 1}</span> <span
                 className='text-solidLove text-2xl font-light'>{serviceData.length}</span>
             </div>
 

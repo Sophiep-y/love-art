@@ -45,8 +45,8 @@ export default function Recommends() {
 
 
     return (
-        <PrivateLayout title={"Recommends"}>
-            <div className='mt-16'>
+        <PrivateLayout title={"Recommends"} className='max-h-screen'>
+            <div className='md:mt-16 mt-0' >
                 <ActiveSlider toggleSidebar={toggleSidebar}></ActiveSlider>
                 <ArtDetailSidebarStateLess
                     art={selectedArtForSidebar}
