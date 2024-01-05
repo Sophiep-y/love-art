@@ -5,7 +5,7 @@ import React, {useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import {HamburgerIcon} from "../../assets/svg";
 
-const SideBar = ({icon, fromSidebarNav}) => {
+const SideBar = ({icon, fromSidebarNav ,className}) => {
     const navigate = useNavigate();
 
     const location = useLocation();
@@ -99,10 +99,10 @@ const SideBar = ({icon, fromSidebarNav}) => {
 
     return (<div>
         {/*open*/}
-        <div onClick={(e) => {
+        <div   onClick={(e) => {
             e.stopPropagation();
             onClickIcon();
-        }} className="cursor-pointer">
+        }} className={`${className} cursor-pointer`}>
             {icon ?? <HamburgerIcon/>}
         </div>
 

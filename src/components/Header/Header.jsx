@@ -12,15 +12,14 @@ const Header = ({title, pageName, exitingNavigation}) => {
 
         <Title title={title} position={Position.Top}/>
 
-        <div className="flex justify-between w-1/6">
-            <div className="cursor-pointer">
+        <div className="flex justify-between items-center md:w-1/6  ">
+            <div className="cursor-pointer ml-6 mx-2">
                 <Search/>
             </div>
-            <div className="cursor-pointer">
+            <div className="cursor-pointer mx-2">
                 <UserIcon/>
             </div>
-
-            <Sidebar/>
+            <Sidebar className='mx-2'/>
 
         </div>
     </div>);
