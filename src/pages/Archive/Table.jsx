@@ -95,7 +95,7 @@ const Table = ({ handleOnClickView }) => {
 
   return (
     <table className="min-w-full border-b border-gray-200">
-      <thead>
+      <thead className='text-primary font-light'>
         <tr>
           <th className="py-3 text-left uppercase border-b-2 border-gray-300">
             Artist
@@ -103,7 +103,7 @@ const Table = ({ handleOnClickView }) => {
           <th className="py-3 text-left uppercase border-b-2 border-gray-300">
             Title
           </th>
-          <th className="py-3 text-left uppercase border-b-2 border-gray-300">
+          <th className="py-3 text-right uppercase border-b-2 border-gray-300">
             Date
           </th>
         </tr>
@@ -120,7 +120,8 @@ const Table = ({ handleOnClickView }) => {
           >
             <td className="py-4">{row.artist}</td>
             <td className="py-4">{row.title}</td>
-            <td className="py-4">
+
+            <td className="py-4 text-right">
               {hoveredRow === index ? (
                 <span
                   onClick={() => handleOnClickView(row)}

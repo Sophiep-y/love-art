@@ -7,6 +7,8 @@ import Grid from "./Grid";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import ImageWithLoading from "../../components/Image/image";
 import useIsMobile from "../../hooks/useIsMobile";
+import Dropdown from "../../components/Dropdown/DropdownButton";
+import DropdownOption from "../../components/Dropdown/DropdownOption";
 
 const ArchivePage = () => {
     const navigate = useNavigate();
@@ -47,25 +49,43 @@ const ArchivePage = () => {
         <PrivateLayout pageTitle="Archive" noHeader footer footer_on_stick={false}>
             <div className="flex justify-between items-center p-5">
                 <span className="text-6xl text-black uppercase">Archive</span>
-                <div className="flex justify-between w-3/5">
+                {!isMobile && <div className="flex justify-between w-3/5">
           <span className="text-primary text-2xl font-light">
             This is a sentence or short paragraph explaining what the archive
             page is and what it features etc.
           </span>
-                </div>
-                {/*<div*/}
-                {/*  className="flex w-16 cursor-pointer"*/}
-                {/*  onClick={() => navigate("/recommends")}*/}
-                {/*>*/}
-                {/*  <CrossIcon />*/}
-                {/*</div>*/}
+                </div>}
 
                 <Sidebar icon={<CrossIcon/>} fromSidebarNav={true}/>
-
             </div>
-            <div className="mt-60 p-5 flex justify-between">
+
+            {
+                isMobile &&
+                <Dropdown className='px-5' initialOption={selected} onSelect={(option) => handleSelected(option)}>
+                    <DropdownOption
+                    >
+                        Grid
+                    </DropdownOption>
+
+                    <DropdownOption
+                    >
+                        List
+                    </DropdownOption>
+                </Dropdown>
+            }
+            {isMobile && <div className="flex justify-between w-full p-5">
+          <span className="text-primary text-xl font-light">
+            This is a sentence or short paragraph explaining what the archive
+            page is and what it features etc.
+          </span>
+            </div>}
+
+
+            <div className={`${isMobile ? 'mt-5 p-5' : 'mt-60 p-5'}  flex justify-between`}>
+
+
                 <div>
-                    {show && (
+                    {!isMobile && show && (
                         <div className="w-1/5 absolute">
                             <ImageWithLoading
                                 src={imageSource.imageUrl}
@@ -74,17 +94,17 @@ const ArchivePage = () => {
                         </div>
                     )}
                     <div>
-            <span
-                onClick={() => handleSelected("Grid")}
-                className={
-                    selected === "Grid"
-                        ? "text-black text-2xl cursor-pointer uppercase"
-                        : "text-primary text-2xl cursor-pointer uppercase"
-                }
-            >
+                        {!isMobile && <span
+                            onClick={() => handleSelected("Grid")}
+                            className={
+                                selected === "Grid"
+                                    ? "text-black text-2xl cursor-pointer uppercase"
+                                    : "text-primary text-2xl cursor-pointer uppercase"
+                            }
+                        >
               Grid
-            </span>
-                        <span
+            </span>}
+                        {!isMobile && <span
                             onClick={() => handleSelected("List")}
                             className={
                                 selected === "List"
@@ -93,10 +113,12 @@ const ArchivePage = () => {
                             }
                         >
               List
-            </span>
+            </span>}
                     </div>
                 </div>
-                <div className="w-3/5">
+                <div className={
+                    isMobile ? 'w-full' : 'w-3/5'
+                }>
                     {selected === "List" ? (
                         <Table
                             handleOnClickView={handleOnClickView}
@@ -120,7 +142,7 @@ const ArchivePage = () => {
                         </button>
                     </div>
                 </div>
-                <div className="w-16"></div>
+                <div className=" md:w-16 w-0"></div>
             </div>
 
 
