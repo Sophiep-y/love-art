@@ -6,6 +6,7 @@ import Grid from "./Grid";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import SideBarArtistBio from "./SidebarBio";
 import {formatDateRange} from "./formatted_date";
+import useIsMobile from "../../hooks/useIsMobile";
 
 
 const ArtistPortfolio = () => {
@@ -20,21 +21,35 @@ const ArtistPortfolio = () => {
     };
 
     const dateFormatted = formatDateRange(artist.dateStart, artist.dateEnd);
+    const isMobile = useIsMobile();
 
     return (
         <PrivateLayout pageTitle="Archive" noHeader footer footer_on_stick={false}>
-            <div className="flex justify-between items-start p-5">
-                <div>
-                    <h2 className="text-2xl font-light mt-4 cursor-pointer">{artist?.artist}</h2>
-                    <p className="text-primary text-2xl italic font-light">{artist?.title}</p>
-                    <p className="text-black font-light my-5">{dateFormatted[0]} &#x2E3A;<br/>{dateFormatted[1]}</p>
-                    <SideBarArtistBio icon={<div
-                        className='text-primary text-2xl cursor-pointer uppercase my-60 hover:text-black'>INFO</div>}/>
+            <div className={`${isMobile ? '' : 'flex justify-between'} items-start p-5`}>
+                <div className='flex justify-between'>
+                    <div>
+                        <h2 className="text-2xl font-light  cursor-pointer">{artist?.artist}</h2>
+                        <p className="text-primary text-2xl italic font-light">{artist?.title}</p>
+                        <p className="text-black font-light my-5">{dateFormatted[0]} &#x2E3A;<br/>{dateFormatted[1]}</p>
+                        <SideBarArtistBio icon={<div
+                            className={`text-primary text-2xl cursor-pointer uppercase ${isMobile ? 'my-10' : 'my-60 '} hover:text-black`}>{
+                            isMobile ? 'Show Info →' : 'INFO'
+                        }</div>}/>
+                    </div>
+
+                    {isMobile &&
+                        <Sidebar icon={<CrossIcon/>} fromSidebarNav={true}/>}
+
                 </div>
-                <div className="w-3/5 mt-20">
+
+
+                <div className={`${isMobile ? 'w-full' : 'w-3/5 mt-20'}`}>
                     <Grid/>
                 </div>
-                <Sidebar icon={<CrossIcon/>} fromSidebarNav={true}/>
+
+
+                {!isMobile &&
+                    <Sidebar icon={<CrossIcon/>} fromSidebarNav={true}/>}
             </div>
 
             <div className='my-10'></div>

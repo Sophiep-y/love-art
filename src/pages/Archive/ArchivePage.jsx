@@ -11,7 +11,6 @@ import Dropdown from "../../components/Dropdown/DropdownButton";
 import DropdownOption from "../../components/Dropdown/DropdownOption";
 
 const ArchivePage = () => {
-    const navigate = useNavigate();
     const [selected, setSelected] = useState("Grid");
     const [selectedCategory, setSelectedCategory] = useState("Collection");
 

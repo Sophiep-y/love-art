@@ -20,10 +20,7 @@ const SideBarArtistBio = ({icon}) => {
     };
 
     const artist = {
-        artist: "Artist 1",
-        title: "Title 1",
-        dateStart: "2021-01-01",
-        dateEnd: "2021-11-01",
+        artist: "Artist 1", title: "Title 1", dateStart: "2021-01-01", dateEnd: "2021-11-01",
 
     };
 
@@ -81,8 +78,7 @@ I've put them in order of my preference. Let me know asap if any are of interest
     const sidebarBaseClasses = "fixed bg-white z-10 shadow-2xl shadow-modalShadowColor py-5";
     const transitionClasses = "transform transition-all duration-300 ease-in-out";
 
-    const sidebarClasses = `${isUnCollapse ? 'block' : 'hidden'}  ${sidebarBaseClasses} py-5 ${isNavigation ? 'w-full'
-        : 'w-1/3'} h-full top-0 bottom-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'right-0'} ${transitionClasses} ${isCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}`;
+    const sidebarClasses = `${isUnCollapse ? 'block' : 'hidden'}  ${sidebarBaseClasses} py-5 ${isNavigation ? 'w-full' : '  md:w-1/3 w-full'} h-full top-0 bottom-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'right-0'} ${transitionClasses} ${isCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}`;
 
     return (<div>
 
@@ -90,7 +86,7 @@ I've put them in order of my preference. Let me know asap if any are of interest
         <div onClick={(e) => {
             e.stopPropagation();
             onClickIcon();
-        }} className="cursor-pointer text-primary text-2xl uppercase my-60 hover:text-black">
+        }} className="cursor-pointer text-primary text-2xl uppercase hover:text-black">
             {icon ?? <HamburgerIcon/>}
         </div>
 
@@ -104,7 +100,7 @@ I've put them in order of my preference. Let me know asap if any are of interest
         ></div> : null}
 
         {/*sidebar*/}
-        <div className={`overflow-y-auto ${sidebarClasses}`}>
+        <div className={`overflow-y-auto ${sidebarClasses} p-4`}>
             {/*close*/}
             <div
                 className="fixed top-4 right-4 cursor-pointer"
@@ -137,17 +133,15 @@ I've put them in order of my preference. Let me know asap if any are of interest
             </div>
 
 
-            <div className="w-full my-10">
-                <div className=" py-2 w-full">
-                    <button
-                        className="  w-full bg-white hover:bg-primary text-black font-semibold hover:text-white py-2  border border-black hover:border-primary"
-                        onClick={() => {
-                            navigate(`/artist/${artist?.id}`);
-                        }}
-                    >
-                        ENQUIRE
-                    </button>
-                </div>
+            <div className="py-2 w-full mr-10 my-10">
+                <button
+                    className="  w-full bg-white hover:bg-primary text-black font-semibold hover:text-white py-2  border border-black hover:border-primary"
+                    onClick={() => {
+                        navigate(`/artist/${artist?.id}`);
+                    }}
+                >
+                    ENQUIRE
+                </button>
             </div>
 
 
