@@ -46,7 +46,7 @@ export const Footer = ({footer, absolute, sticky = true, ref, className}) => {
 
     return (
 
-        <div>
+        <div className={ `${isMobile? '':`flex bottom-0 ${sticky?'fixed':''}`}`}>
             {footer && isMobile && <Logo className='m-4'/>}
 
             <footer ref={ref}
@@ -58,7 +58,6 @@ export const Footer = ({footer, absolute, sticky = true, ref, className}) => {
                                 `flex justify-between bottom-0 left-4 bg-white mb-4`
                     }  md:m-0 m-4`}
             >
-
                 {/*logo*/}
                 {!isMobile && footer && <Logo/>}
 

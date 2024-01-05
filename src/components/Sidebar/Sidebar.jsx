@@ -144,7 +144,7 @@ const SideBar = ({icon, fromSidebarNav, className}) => {
             </div>
 
             {/*footer*/}
-            <Footer fixed className='md:scale-100 scale-0 md:opacity-100  opacity-0 '/>
+            <Footer sticky className='md:scale-100 scale-0 md:opacity-100  opacity-0 '/>
         </div>
     </div>);
 }
