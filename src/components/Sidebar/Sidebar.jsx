@@ -5,7 +5,7 @@ import React, {useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import {HamburgerIcon} from "../../assets/svg";
 
-const SideBar = ({icon, fromSidebarNav ,className}) => {
+const SideBar = ({icon, fromSidebarNav, className}) => {
     const navigate = useNavigate();
 
     const location = useLocation();
@@ -99,7 +99,7 @@ const SideBar = ({icon, fromSidebarNav ,className}) => {
 
     return (<div>
         {/*open*/}
-        <div   onClick={(e) => {
+        <div onClick={(e) => {
             e.stopPropagation();
             onClickIcon();
         }} className={`${className} cursor-pointer`}>
@@ -147,7 +147,7 @@ const SideBar = ({icon, fromSidebarNav ,className}) => {
             </div>
 
             {/*footer*/}
-            <Footer  absolute className='md:block hidden'/>
+            <Footer absolute className='md:scale-100 scale-0 md:opacity-100  opacity-0 '/>
         </div>
     </div>);
 }
