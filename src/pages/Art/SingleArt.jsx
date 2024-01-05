@@ -3,11 +3,13 @@ import React from "react";
 import PrivateLayout from "../../components/Layout/PrivateLayout";
 import {CrossIcon} from "../../assets/svg/cross-icon";
 import ImageWithLoading from "../../components/Image/image";
+import useIsMobile from "../../hooks/useIsMobile";
 
 
 const SingleArt = () => {
     const {id} = useParams();
     const navigate = useNavigate();
+    const isMobile = useIsMobile();
 
     const art = {
         id: 4,
@@ -55,14 +57,18 @@ const SingleArt = () => {
                         <p className='text-black'>1000 AUD</p>
                     </div>
                 </div>
-                <div className="w-3/5 mt-20">
+
+
+                {!isMobile && <div className="w-3/5 mt-20">
                     <div className="shadow-recommendation">
                         <ImageWithLoading
                             src={art?.imageUrl}
                             alt="Card Image"
                         />
                     </div>
-                </div>
+                </div>}
+
+
                 <div className='cursor-pointer' onClick={() => {
                     // go back to the previous page if possible
                     // else go to the home page
@@ -77,7 +83,18 @@ const SingleArt = () => {
                     <CrossIcon/>
                 </div>
             </div>
+
+
             <div className='my-10'></div>
+
+            {isMobile && <div className="w-full px-10">
+                <div className="shadow-recommendation">
+                    <ImageWithLoading
+                        src={art?.imageUrl}
+                        alt="Card Image"
+                    />
+                </div>
+            </div>}
         </PrivateLayout>
     );
 
