@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
+import useIsMobile from "../../hooks/useIsMobile";
 
 const dummyData = [
     {
@@ -17,12 +18,8 @@ const dummyData = [
 ];
 
 const Table = ({handleOnClickView, className}) => {
+    const isMobile = useIsMobile();
 
-    let isMobile = window.innerWidth < 768;
-    useEffect(() => {
-        isMobile = window.innerWidth < 768;
-
-    });
     const [hoveredRow, setHoveredRow] = useState(null);
     return (
         <table className={`${className} min-w-full border-b border-gray-200`}>
@@ -56,10 +53,10 @@ const Table = ({handleOnClickView, className}) => {
                     <td className="py-4">
 
                         <div className='flex flex-col'>
-                           <div className="uppercase">
-                               {row.artist}
-                           </div>
-                            { isMobile && <div className='italic text-sm'>
+                            <div className="uppercase">
+                                {row.artist}
+                            </div>
+                            {isMobile && <div className='italic text-sm'>
                                 {row.title}
                             </div>}
                         </div>

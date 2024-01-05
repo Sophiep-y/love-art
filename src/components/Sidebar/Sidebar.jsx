@@ -7,17 +7,13 @@ import {HamburgerIcon} from "../../assets/svg";
 
 const SideBar = ({icon, fromSidebarNav, className}) => {
     const navigate = useNavigate();
-
     const location = useLocation();
 
 
     const [isCollapsed, setIsCollapsed] = useState(true);
     const [isUnCollapse, setIsUnCollapse] = useState(false);
 
-
     const [isNavigation, setIsNavigation] = useState(false);
-
-
     const [isSidebarHidden, setIsSidebarHidden] = useState(fromSidebarNav);
     const [isSidebarNavigation, setIsSidebarNavigation] = useState(false);
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);

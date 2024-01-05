@@ -1,52 +1,23 @@
-import React, {useState} from "react";
+import React from "react";
 import PrivateLayout from "../../components/Layout/PrivateLayout";
 import ActiveSlider from "./Slider";
 import ArtDetailSidebarStateLess from "../../components/ArtCard/ArtSidebarStateless";
+import userArtDetailSidebar from "../../hooks/userArtDetailSidebar";
 
 export default function Recommends() {
 
-    const [isCollapsed, setIsCollapsed] = useState(true);
-    const [isUnCollapse, setIsUnCollapse] = useState(false);
-    const [isNavigation, setIsNavigation] = useState(false);
-
-
-    const [selectedArtForSidebar, setSelectedArtForSidebar] = useState(
-        null
-    )
-
-
-    const toggleSidebar = ({art}) => {
-        console.log(art);
-
-        if (art) {
-            setSelectedArtForSidebar(art)
-        }
-
-        if (isNavigation) {
-            setIsNavigation(false);
-        } else {
-            if (isUnCollapse) {
-                setIsCollapsed(!isCollapsed);
-                setTimeout(() => {
-                    setIsUnCollapse(!isUnCollapse);
-                }, 300);
-
-            } else {
-                setIsUnCollapse(!isUnCollapse);
-                setTimeout(() => {
-                    setIsCollapsed(!isCollapsed);
-                }, 0);
-
-            }
-
-        }
-
-    };
+    const {
+        isCollapsed,
+        isUnCollapse,
+        isNavigation,
+        selectedArtForSidebar,
+        toggleSidebar,
+    } = userArtDetailSidebar();
 
 
     return (
-        <PrivateLayout title={"Recommends"} className='max-h-screen' >
-            <div className='md:mt-4 mt-0' >
+        <PrivateLayout title={"Recommends"} className='max-h-screen'>
+            <div className='md:mt-4 mt-0'>
                 <ActiveSlider toggleSidebar={toggleSidebar}></ActiveSlider>
                 <div className='mt-16'></div>
                 <ArtDetailSidebarStateLess

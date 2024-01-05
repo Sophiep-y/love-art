@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import PrivateLayout from "../../components/Layout/PrivateLayout";
 import {CrossIcon} from "../../assets/svg/cross-icon";
 import Table from "./Table";
@@ -8,6 +8,8 @@ import {salesData} from "./salesData";
 import Dropdown from "../../components/Dropdown/DropdownButton";
 import DropdownOption from "../../components/Dropdown/DropdownOption";
 import ArtDetailSidebarStateLess from "../../components/ArtCard/ArtSidebarStateless";
+import useIsMobile from "../../hooks/useIsMobile";
+import userArtDetailSidebar from "../../hooks/userArtDetailSidebar";
 
 
 const ProfilePage = () => {
@@ -17,11 +19,8 @@ const ProfilePage = () => {
     const [imageSource, setImageSource] = useState(null);
     const [isValueHidden, setIsValueHidden] = useState(false);
 
-    let isMobile = window.innerWidth < 768;
-    useEffect(() => {
-        isMobile = window.innerWidth < 768;
+    const isMobile = useIsMobile();
 
-    });
 
     const handleOnClickView = (row) => {
 
@@ -46,47 +45,13 @@ const ProfilePage = () => {
         setSelectedCategory(value);
     };
 
-
-    // sidebar
-
-
-    const [isCollapsed, setIsCollapsed] = useState(true);
-    const [isUnCollapse, setIsUnCollapse] = useState(false);
-    const [isNavigation, setIsNavigation] = useState(false);
-
-
-    const [selectedArtForSidebar, setSelectedArtForSidebar] = useState(
-        null
-    )
-
-
-    const toggleSidebar = ({art}) => {
-        console.log(art);
-
-        if (art) {
-            setSelectedArtForSidebar(art)
-        }
-
-        if (isNavigation) {
-            setIsNavigation(false);
-        } else {
-            if (isUnCollapse) {
-                setIsCollapsed(!isCollapsed);
-                setTimeout(() => {
-                    setIsUnCollapse(!isUnCollapse);
-                }, 300);
-
-            } else {
-                setIsUnCollapse(!isUnCollapse);
-                setTimeout(() => {
-                    setIsCollapsed(!isCollapsed);
-                }, 0);
-
-            }
-
-        }
-
-    };
+    const {
+        isCollapsed,
+        isUnCollapse,
+        isNavigation,
+        selectedArtForSidebar,
+        toggleSidebar,
+    } = userArtDetailSidebar();
 
 
     return (

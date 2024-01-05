@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Logo} from "../../assets/svg";
+import useIsMobile from "../../hooks/useIsMobile";
 
 export const Footer = ({footer, absolute, sticky = true, ref, className}) => {
 
@@ -41,7 +42,7 @@ export const Footer = ({footer, absolute, sticky = true, ref, className}) => {
     ]
 
 
-    const isMobile = window.innerWidth < 768;
+    const isMobile = useIsMobile();
 
     return (
 
