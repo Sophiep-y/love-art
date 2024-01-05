@@ -93,8 +93,8 @@ const SideBar = ({icon, fromSidebarNav ,className}) => {
 
     const sidebarClasses = fromSidebarNav ?
         isSidebarNavigation ?
-            `${sidebarBaseClasses} ${isNavigation ? 'w-full' : 'w-2/3'} h-full top-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'left-1/3'} ${transitionClasses} ${isSidebarCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}` :
-            `${isSidebarHidden ? 'hidden' : 'block'} ${sidebarBaseClasses} py-5 w-full h-full top-0 pt-0.5 pl-5 left-0 ${transitionClasses} translate-x-0` : `${isUnCollapse ? 'block' : 'hidden'} ${sidebarBaseClasses} py-5 ${isNavigation ? 'w-full' : 'w-2/3'} h-full top-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'left-1/3'} ${transitionClasses} ${isCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}`;
+            `${sidebarBaseClasses} ${isNavigation ? 'w-full' : 'md:w-2/3 w-full'} h-full top-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'md:left-1/3 left-0'} ${transitionClasses} ${isSidebarCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}` :
+            `${isSidebarHidden ? 'hidden' : 'block'} ${sidebarBaseClasses} py-5 w-full h-full top-0 pt-0.5 pl-5 left-0 ${transitionClasses} translate-x-0` : `${isUnCollapse ? 'block' : 'hidden'} ${sidebarBaseClasses} py-5 ${isNavigation ? 'w-full' : 'md:w-2/3 w-full'} h-full top-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'md:left-1/3 left-0'} ${transitionClasses} ${isCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}`;
 
 
     return (<div>
@@ -147,7 +147,7 @@ const SideBar = ({icon, fromSidebarNav ,className}) => {
             </div>
 
             {/*footer*/}
-            <Footer absolute/>
+            <Footer  absolute className='md:block hidden'/>
         </div>
     </div>);
 }

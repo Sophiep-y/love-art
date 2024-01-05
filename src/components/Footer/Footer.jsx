@@ -1,7 +1,7 @@
 import React from "react";
 import {Logo} from "../../assets/svg";
 
-export const Footer = ({footer, absolute, sticky = true, ref}) => {
+export const Footer = ({footer, absolute, sticky = true, ref, className}) => {
 
     const links = [
         {
@@ -43,7 +43,7 @@ export const Footer = ({footer, absolute, sticky = true, ref}) => {
 
     return (
         <footer ref={ref}
-                className={`${
+                className={`${className} ${
                     absolute
                         ? "absolute bg-white bottom-0 flex justify-between mb-4"
                         :

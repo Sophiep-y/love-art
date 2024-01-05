@@ -48,60 +48,39 @@ const Search = () => {
 
     return (
         <div>
+            {isSearchActive && (
+                <div
+                    className={`fixed top-0 left-0 w-full h-full bg-white  transition-all duration-300 ${isSearchActive ? 'bg-opacity-90 z-10' : 'bg-opacity-0'} ease-in-out`}
+                >
+                    <div className="flex justify-between items-stretch h-screen">
+                        <div className='md:m-8 m-4 w-full'>
+                            <input
+                                className="w-full h-12 border-none px-5 placeholder:uppercase placeholder:text-primary font-light text-4xl active:outline-none focus:outline-none "
+                                type="text"
+                                placeholder="Search Artist"
+                            />
 
-            {
-                isSearchActive && (
-                    <div
-                        className={`fixed top-0 left-0 w-full h-full bg-white z-10 transition-all duration-300 ${isSearchActive ? 'bg-opacity-90' : 'bg-opacity-0'} ease-in-out`}
-                    >
-
-                        <div className="flex justify-start items-start h-screen">
-                            <div className=' m-8 w-full'>
-                                <input
-                                    className="  h-12 border-none  px-5 placeholder:uppercase placeholder:text-primary font-light text-4xl active:outline-none focus:outline-none "
-                                    type="text"
-                                    placeholder="Search Artist"
-
-                                />
-
-                                <div className='m-8'>
-
-                                    {
-                                        dummyData.map((e) => {
-                                            return (
-                                                <div
-                                                    className='hover:text-black text-primary hover:underline my-2 text-2xl'>
-                                                    {e.artist}
-                                                </div>
-                                            )
-
-                                        })
-                                    }
-                                </div>
-                            </div>
-
-                            <div className='m-8 cursor-pointer' onClick={() => {
-                                setIsSearchActive(!isSearchActive)
-                            }}>
-                                <CrossIcon></CrossIcon>
+                            <div className='m-8'>
+                                {dummyData.map((e) => (
+                                    <div className='hover:text-black text-primary hover:underline my-2 text-2xl'>
+                                        {e.artist}
+                                    </div>
+                                ))}
                             </div>
                         </div>
 
-
+                        <div className='md:m-8 m-4 cursor-pointer' onClick={() => setIsSearchActive(false)}>
+                            <CrossIcon/>
+                        </div>
                     </div>
-                )
-            }
+                </div>
+            )}
 
-            <button onClick={() => {
-                setIsSearchActive(!isSearchActive)
-            }}>
+            <button onClick={() => setIsSearchActive(!isSearchActive)}>
                 <SearchIcon/>
             </button>
-
-
         </div>
-    )
-
-}
+    );
+};
 
 export default Search;
