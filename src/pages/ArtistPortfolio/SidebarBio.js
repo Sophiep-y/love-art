@@ -78,11 +78,11 @@ I've put them in order of my preference. Let me know asap if any are of interest
     };
 
 
-    const sidebarBaseClasses = "absolute bg-white z-10 shadow-2xl shadow-modalShadowColor py-5";
+    const sidebarBaseClasses = "fixed bg-white z-10 shadow-2xl shadow-modalShadowColor py-5";
     const transitionClasses = "transform transition-all duration-300 ease-in-out";
 
     const sidebarClasses = `${isUnCollapse ? 'block' : 'hidden'}  ${sidebarBaseClasses} py-5 ${isNavigation ? 'w-full'
-        : 'w-1/3'} h-full top-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'right-0'} ${transitionClasses} ${isCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}`;
+        : 'w-1/3'} h-full top-0 bottom-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'right-0'} ${transitionClasses} ${isCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}`;
 
     return (<div>
 
@@ -96,7 +96,7 @@ I've put them in order of my preference. Let me know asap if any are of interest
 
         {/*overlay*/}
         {(!isCollapsed) ? <div
-            className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-10"
+            className="fixed top-0 bottom-0 left-0 w-full h-full bg-black opacity-50 z-10"
 
             onClick={() => {
                 toggleSideBar();
@@ -107,7 +107,7 @@ I've put them in order of my preference. Let me know asap if any are of interest
         <div className={`overflow-y-auto ${sidebarClasses}`}>
             {/*close*/}
             <div
-                className="absolute top-4 right-4 cursor-pointer"
+                className="fixed top-4 right-4 cursor-pointer"
                 onClick={(e) => {
                     toggleSideBar();
                 }}

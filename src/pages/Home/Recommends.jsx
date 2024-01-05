@@ -2,7 +2,7 @@ import React from "react";
 import PrivateLayout from "../../components/Layout/PrivateLayout";
 import ActiveSlider from "./Slider";
 import ArtDetailSidebarStateLess from "../../components/ArtCard/ArtSidebarStateless";
-import userArtDetailSidebar from "../../hooks/userArtDetailSidebar";
+import userArtDetailSidebar from "../../hooks/useArtDetailSidebar";
 
 export default function Recommends() {
 

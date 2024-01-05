@@ -9,7 +9,7 @@ import Dropdown from "../../components/Dropdown/DropdownButton";
 import DropdownOption from "../../components/Dropdown/DropdownOption";
 import ArtDetailSidebarStateLess from "../../components/ArtCard/ArtSidebarStateless";
 import useIsMobile from "../../hooks/useIsMobile";
-import userArtDetailSidebar from "../../hooks/userArtDetailSidebar";
+import userArtDetailSidebar from "../../hooks/useArtDetailSidebar";
 
 
 const ProfilePage = () => {

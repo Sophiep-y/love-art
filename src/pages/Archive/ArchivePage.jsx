@@ -6,6 +6,7 @@ import Table from "./Table";
 import Grid from "./Grid";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import ImageWithLoading from "../../components/Image/image";
+import useIsMobile from "../../hooks/useIsMobile";
 
 const ArchivePage = () => {
     const navigate = useNavigate();
@@ -15,6 +16,9 @@ const ArchivePage = () => {
 
     const [show, setShow] = useState(false);
     const [imageSource, setImageSource] = useState(null);
+
+
+    const isMobile = useIsMobile();
 
     const handleOnClickView = (row) => {
         console.log(row)

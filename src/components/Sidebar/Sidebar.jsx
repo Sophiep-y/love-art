@@ -19,6 +19,7 @@ const SideBar = ({icon, fromSidebarNav, className}) => {
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
 
+
     const handleExtendClick = () => {
         setIsNavigation(!isNavigation);
     };
@@ -84,13 +85,13 @@ const SideBar = ({icon, fromSidebarNav, className}) => {
     };
 
 
-    const sidebarBaseClasses = "absolute bg-white z-10 shadow-2xl shadow-modalShadowColor py-5";
+    const sidebarBaseClasses = "fixed bg-white z-10 shadow-2xl shadow-modalShadowColor py-5";
     const transitionClasses = "transform transition-all duration-300 ease-in-out";
 
     const sidebarClasses = fromSidebarNav ?
         isSidebarNavigation ?
-            `${sidebarBaseClasses} ${isNavigation ? 'w-full' : 'md:w-2/3 w-full'} h-full top-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'md:left-1/3 left-0'} ${transitionClasses} ${isSidebarCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}` :
-            `${isSidebarHidden ? 'hidden' : 'block'} ${sidebarBaseClasses} py-5 w-full h-full top-0 pt-0.5 pl-5 left-0 ${transitionClasses} translate-x-0` : `${isUnCollapse ? 'block' : 'hidden'} ${sidebarBaseClasses} py-5 ${isNavigation ? 'w-full' : 'md:w-2/3 w-full'} h-full top-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'md:left-1/3 left-0'} ${transitionClasses} ${isCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}`;
+            `${sidebarBaseClasses} ${isNavigation ? 'w-full' : 'md:w-2/3 w-full'} h-full top-0 bottom-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'md:left-1/3 left-0'} ${transitionClasses} ${isSidebarCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}` :
+            `${isSidebarHidden ? 'hidden' : 'block'} ${sidebarBaseClasses} py-5 w-full h-full top-0 bottom-0 pt-0.5 pl-5 left-0 ${transitionClasses} translate-x-0` : `${isUnCollapse ? 'block' : 'hidden'} ${sidebarBaseClasses} py-5 ${isNavigation ? 'w-full' : 'md:w-2/3 w-full'} h-full top-0 bottom-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'md:left-1/3 left-0'} ${transitionClasses} ${isCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}`;
 
 
     return (<div>
@@ -104,7 +105,7 @@ const SideBar = ({icon, fromSidebarNav, className}) => {
 
         {/*overlay*/}
         {(!isCollapsed || isSidebarNavigation) ? <div
-            className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-10"
+            className={`fixed top-0 bottom-0 left-0 w-full h-full bg-black opacity-50 z-10`}
 
             onClick={() => {
                 if (fromSidebarNav) {
@@ -134,7 +135,7 @@ const SideBar = ({icon, fromSidebarNav, className}) => {
 
             {/*close*/}
             <div
-                className="absolute top-4 right-4 cursor-pointer"
+                className="fixed top-4 right-4 cursor-pointer"
                 onClick={(e) => {
                     isSidebarNavigation ? onClickIcon() : toggleSideBar();
                 }}
@@ -143,7 +144,7 @@ const SideBar = ({icon, fromSidebarNav, className}) => {
             </div>
 
             {/*footer*/}
-            <Footer absolute className='md:scale-100 scale-0 md:opacity-100  opacity-0 '/>
+            <Footer fixed className='md:scale-100 scale-0 md:opacity-100  opacity-0 '/>
         </div>
     </div>);
 }

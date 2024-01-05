@@ -7,6 +7,8 @@ const useArtDetailSidebar = () => {
     const [isNavigation, setIsNavigation] = useState(false);
     const [selectedArtForSidebar, setSelectedArtForSidebar] = useState(null);
 
+
+
     const toggleSidebar = ({ art }) => {
         console.log(art);
 

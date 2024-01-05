@@ -74,12 +74,13 @@ const ArtDetailSidebarStateLess = ({
         },
 
     }
+    // const {scrollPosition} = useUserScrollPosition();
+    const scrollPosition = 100;
 
-
-    const sidebarBaseClasses = "absolute bg-white z-10 shadow-2xl shadow-modalShadowColor py-5";
+    const sidebarBaseClasses = "fixed bg-white z-10 shadow-2xl shadow-modalShadowColor py-5";
     const transitionClasses = "transform transition-all duration-300 ease-in-out";
     const sidebarClasses = `${isUnCollapse ? 'block' : 'hidden'}  ${sidebarBaseClasses} py-5 ${isNavigation ? 'w-full'
-        : '  md:w-1/3 w-full'} h-full top-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'right-0'} ${transitionClasses} ${isCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}`;
+        : '  md:w-1/3 w-full'} h-full top-0 bottom-0 pt-0.5 pl-5 ${isNavigation ? 'left-0' : 'right-0'} ${transitionClasses} ${isCollapsed ? 'translate-x-full' : isNavigation ? 'translate-x-0' : '-translate-x-0'}`;
 
 
     return (<div>
@@ -89,7 +90,7 @@ const ArtDetailSidebarStateLess = ({
         {showIcon &&
             <div onClick={(e) => {
                 e.stopPropagation();
-                toggleSidebar({art:null});
+                toggleSidebar({art: null});
             }} className="cursor-pointer text-primary text-2xl uppercase hover:text-black">
                 {icon ?? <HamburgerIcon/>}
             </div>}
@@ -97,9 +98,9 @@ const ArtDetailSidebarStateLess = ({
 
         {/*overlay*/}
         {(!isCollapsed) ? <div
-            className="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-10 duration-300 ease-in-out "
+            className={`fixed top-0 bottom-0 left-0 w-full h-full bg-black opacity-50 z-10 duration-300 ease-in-out `}
             onClick={() => {
-                toggleSidebar({art:null});
+                toggleSidebar({art: null});
             }}
         ></div> : null}
 
@@ -107,9 +108,9 @@ const ArtDetailSidebarStateLess = ({
         <div className={`${sidebarClasses} overflow-y-scroll `}>
             {/*close*/}
             <div
-                className="absolute top-4 right-4 cursor-pointer"
+                className={`fixed top-4 right-4 cursor-pointer`}
                 onClick={(e) => {
-                    toggleSidebar({art:null});
+                    toggleSidebar({art: null});
                 }}
             >
                 <CrossIcon/>
