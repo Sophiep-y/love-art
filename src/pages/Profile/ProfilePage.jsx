@@ -10,6 +10,7 @@ import DropdownOption from "../../components/Dropdown/DropdownOption";
 import ArtDetailSidebarStateLess from "../../components/ArtCard/ArtSidebarStateless";
 import useIsMobile from "../../hooks/useIsMobile";
 import userArtDetailSidebar from "../../hooks/useArtDetailSidebar";
+import AnimationLayout from "../../components/AnimationLayout/AnimationLayout";
 
 
 const ProfilePage = () => {
@@ -55,7 +56,7 @@ const ProfilePage = () => {
 
 
     return (
-        <div>
+        <AnimationLayout>
             <PrivateLayout pageTitle="Profile" noHeader footer footer_on_stick={false} className='mb-20'>
                 <div className={`${isMobile ? 'block' : 'flex'} justify-between items-center pt-5 px-5`}>
                     <div className='flex justify-between items-center'>
@@ -189,7 +190,7 @@ const ProfilePage = () => {
                 isNavigation={isNavigation}
                 toggleSidebar={toggleSidebar}
             />
-        </div>)
+        </AnimationLayout>)
 };
 
 export default ProfilePage;

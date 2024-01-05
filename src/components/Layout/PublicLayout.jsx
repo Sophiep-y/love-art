@@ -1,7 +1,12 @@
 import React from "react";
+import AnimationLayout from "../AnimationLayout/AnimationLayout";
 
 const PublicLayout = ({children}) => {
-    return <div>{children}</div>;
+    return (
+        <AnimationLayout>
+            <div>{children}</div>
+        </AnimationLayout>
+    );
 };
 
 export default PublicLayout;
