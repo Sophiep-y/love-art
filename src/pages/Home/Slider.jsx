@@ -146,7 +146,7 @@ const ActiveSlider = ({toggleSidebar}) => {
     const [activeIndex, setActiveIndex] = useState(1);
     const [swiper, setSwiper] = useState(null);
     return (
-        <div>
+        <div className='flex items-center justify-center '>
             <Swiper
                 onSwiper={setSwiper}
                 slidesPerView={'auto'}
@@ -169,7 +169,7 @@ const ActiveSlider = ({toggleSidebar}) => {
                 }}
                 modules={[Pagination]}
                 centeredSlides={true}
-                className="max-w-max"
+                className="max-w-max h-2/3 items-center justify-center"
                 onPaginationUpdate={(swiper) => {
                     setActiveIndex(swiper.activeIndex)
                 }}
@@ -180,7 +180,7 @@ const ActiveSlider = ({toggleSidebar}) => {
                                             onClick={() => {
                                                 swiper.slideTo(index);
                                             }}
-                                            className='md:m-0 p-16'
+                                            className="md:pt-8 pt-0"
                         >
                             <ArtCard art={item} navigateToArt={false} toggleSidebar={toggleSidebar}/>
                         </SwiperSlide>
@@ -188,7 +188,7 @@ const ActiveSlider = ({toggleSidebar}) => {
                 }
             </Swiper>
 
-            <div className="md:block hidden  m-4 bottom-0 left-0 fixed ">
+            <div className="md:block hidden  m-4 bottom-0 left-0 fixed z-20 ">
                 <span className=" text-2xl font-light">{activeIndex + 1}</span> <span
                 className='text-solidLove text-2xl font-light'>{serviceData.length}</span>
             </div>
