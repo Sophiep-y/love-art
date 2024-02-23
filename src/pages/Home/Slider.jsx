@@ -7,6 +7,8 @@ import "swiper/css/free-mode";
 import {Pagination} from "swiper/modules";
 import ArtCard from "../../components/ArtCard/ArtCard";
 import React, {useState} from "react";
+import {useDataQuery} from "../../hooks/crud/data.query";
+import {API_END_POINTS} from "../../utils/api-endpoint";
 
 
 const serviceData = [
@@ -145,6 +147,10 @@ const serviceData = [
 const ActiveSlider = ({toggleSidebar}) => {
     const [activeIndex, setActiveIndex] = useState(1);
     const [swiper, setSwiper] = useState(null);
+    const {data:recommendList}=useDataQuery
+    ({
+        url: API_END_POINTS.recommendation,
+    });
     return (
         <div className='flex items-center justify-center '>
             <Swiper
@@ -175,7 +181,7 @@ const ActiveSlider = ({toggleSidebar}) => {
                 }}
             >
                 {
-                    serviceData.map((item, index) => {
+                    recommendList?.map((item, index) => {
                         return <SwiperSlide key={item.title}
                                             onClick={() => {
                                                 swiper.slideTo(index);
@@ -190,7 +196,7 @@ const ActiveSlider = ({toggleSidebar}) => {
 
             <div className="md:block hidden  m-4 bottom-0 left-0 fixed z-20 ">
                 <span className=" text-2xl font-light">{activeIndex + 1}</span> <span
-                className='text-solidLove text-2xl font-light'>{serviceData.length}</span>
+                className='text-solidLove text-2xl font-light'>{recommendList?.length}</span>
             </div>
 
         </div>

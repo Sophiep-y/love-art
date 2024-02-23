@@ -4,6 +4,8 @@ import ActiveSlider from "./Slider";
 import ArtDetailSidebarStateLess from "../../components/ArtCard/ArtSidebarStateless";
 import userArtDetailSidebar from "../../hooks/useArtDetailSidebar";
 import AnimationLayout from "../../components/AnimationLayout/AnimationLayout";
+import {useDataQuery} from "../../hooks/crud/data.query";
+import {API_END_POINTS} from "../../utils/api-endpoint";
 
 const Recommends= ()=> {
 
@@ -14,6 +16,11 @@ const Recommends= ()=> {
         selectedArtForSidebar,
         toggleSidebar,
     } = userArtDetailSidebar();
+
+    const {data:recommendList}=useDataQuery
+    ({
+        url: API_END_POINTS.recommendation,
+    });
 
 
     return (

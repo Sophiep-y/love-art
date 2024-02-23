@@ -11,7 +11,8 @@ const ArtDetailSidebarStateLess = ({
                                        isCollapsed,
                                        isUnCollapse,
                                        isNavigation,
-                                       toggleSidebar
+                                       toggleSidebar,
+    data
                                    }) => {
 
 
@@ -120,16 +121,16 @@ const ArtDetailSidebarStateLess = ({
             <div>
                 {/*artist*/}
                 <div className="text-2xl">
-                    {art?.artist}
+                    {data?.artist}
                 </div>
                 {/*title*/}
                 <div className="text-2xl italic ">
-                    {art?.title}
+                    {data?.title}
                 </div>
                 {/*image*/}
                 <div className="shadow-recommendation mr-8 my-4">
                     <ImageWithLoading
-                        src={art?.imageUrl}
+                        src={data?.imageUrl}
                         alt="Card Image"
                     />
                 </div>

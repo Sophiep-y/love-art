@@ -24,7 +24,7 @@ const ArtCard = ({art, index, navigateToArt = true, toggleSidebar}) => {
             {/*  alt="Card Image"*/}
             {/*/>*/}
             <ImageWithLoading
-                src={art?.imageUrl}
+                src={'https://picsum.photos/400/500'}
                 alt="Card Image"
             />
         </div>
@@ -46,12 +46,12 @@ const ArtCard = ({art, index, navigateToArt = true, toggleSidebar}) => {
 
         {/* title */}
         <div>
-            <p className="italic font-light">{art?.title}</p>
+            <p className="italic font-light">{decodeURIComponent(art?.title)}</p>
         </div>
 
         {/* Details */}
         <div>
-            <p className=" text-primary font-light">{art?.material}</p>
+            <p className=" text-primary font-light">{art?.detail}</p>
         </div>
 
         {/* Dimensions */}
@@ -63,7 +63,7 @@ const ArtCard = ({art, index, navigateToArt = true, toggleSidebar}) => {
         {/* Details */}
         <div
             className={`flex justify-between items-center py-2  cursor-pointer`}>
-            <p className='text-black'>1000 AUD</p>
+            <p className='text-black'>{art?.purchase_price_orig} AUD</p>
 
             <div className='font-light hover:text-black text-primary' onClick={() => {
                 toggleSidebar({art: art})
