@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Logo = ({className}) => {
+export const Logo = ({ className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

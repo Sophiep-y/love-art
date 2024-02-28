@@ -1,3 +1,4 @@
 export const API_END_POINTS = {
-    recommendation: '/recommendations',
-}
+  recommendation: "/artworks/recommendations",
+  archives: "/archives",
+};

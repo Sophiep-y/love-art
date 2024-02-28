@@ -1,10 +1,10 @@
-import { Route, Redirect } from 'react-router-dom';
+import { Redirect, Route } from "react-router-dom";
 
 // This is a placeholder. Replace this with your own authentication check logic.
 const isAuthenticated = () => {
   // Check if the user is authenticated
   // For example, check if there's a token in the local storage
-  return localStorage.getItem('token') !== null;
+  return localStorage.getItem("token") !== null;
 };
 
 export function PublicRoute({ children, ...rest }) {
@@ -16,7 +16,7 @@ export function PublicRoute({ children, ...rest }) {
           <Redirect
             to={{
               pathname: "/",
-              state: { from: location }
+              state: { from: location },
             }}
           />
         ) : (
@@ -38,7 +38,7 @@ export function PrivateRoute({ children, ...rest }) {
           <Redirect
             to={{
               pathname: "/login",
-              state: { from: location }
+              state: { from: location },
             }}
           />
         )

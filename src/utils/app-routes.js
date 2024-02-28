@@ -26,6 +26,4 @@ export const APP_ROUTES = {
     permission: '/permission',
     tipManagement: '/tip-management',
     settings: '/settings',
-
-
 }

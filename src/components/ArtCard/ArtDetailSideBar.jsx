@@ -1,6 +1,5 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import ArtDetailSidebarStateLess from "./ArtSidebarStateless";
-
 
 // const art = {
 //     artist: "Artist 1",
@@ -80,48 +79,40 @@ import ArtDetailSidebarStateLess from "./ArtSidebarStateless";
 //
 // }
 
+const ArtDetailSidebar = ({ art, icon, showIcon = true }) => {
+  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isUnCollapse, setIsUnCollapse] = useState(false);
+  const [isNavigation, setIsNavigation] = useState(false);
 
-const ArtDetailSidebar = ({art, icon, showIcon = true}) => {
+  const toggleSidebar = ({ item }) => {
+    if (isNavigation) {
+      setIsNavigation(false);
+    } else {
+      if (isUnCollapse) {
+        setIsCollapsed(!isCollapsed);
+        setTimeout(() => {
+          setIsUnCollapse(!isUnCollapse);
+        }, 300);
+      } else {
+        setIsUnCollapse(!isUnCollapse);
+        setTimeout(() => {
+          setIsCollapsed(!isCollapsed);
+        }, 0);
+      }
+    }
+  };
 
-    const [isCollapsed, setIsCollapsed] = useState(true);
-    const [isUnCollapse, setIsUnCollapse] = useState(false);
-    const [isNavigation, setIsNavigation] = useState(false);
-
-
-    const toggleSidebar = ({item}) => {
-        if (isNavigation) {
-            setIsNavigation(false);
-        } else {
-            if (isUnCollapse) {
-                setIsCollapsed(!isCollapsed);
-                setTimeout(() => {
-                    setIsUnCollapse(!isUnCollapse);
-                }, 300);
-
-            } else {
-                setIsUnCollapse(!isUnCollapse);
-                setTimeout(() => {
-                    setIsCollapsed(!isCollapsed);
-                }, 0);
-
-            }
-
-        }
-    };
-
-    return (
-        <ArtDetailSidebarStateLess
-            icon={icon}
-            art={art}
-            showIcon={showIcon}
-            isCollapsed={isCollapsed}
-            isUnCollapse={isUnCollapse}
-            isNavigation={isNavigation}
-            toggleSidebar={toggleSidebar}
-        ></ArtDetailSidebarStateLess>
-    )
-
-
-}
+  return (
+    <ArtDetailSidebarStateLess
+      icon={icon}
+      art={art}
+      showIcon={showIcon}
+      isCollapsed={isCollapsed}
+      isUnCollapse={isUnCollapse}
+      isNavigation={isNavigation}
+      toggleSidebar={toggleSidebar}
+    ></ArtDetailSidebarStateLess>
+  );
+};
 
 export default ArtDetailSidebar;

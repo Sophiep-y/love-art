@@ -90,12 +90,12 @@ const dummyData = [
   },
 ];
 
-const Table = ({ handleOnClickView }) => {
+const Table = ({ handleOnClickView, data }) => {
   const [hoveredRow, setHoveredRow] = useState(null);
 
   return (
     <table className="min-w-full border-b border-gray-200">
-      <thead className='text-primary font-light'>
+      <thead className="text-primary font-light">
         <tr>
           <th className="py-3 text-left uppercase border-b-2 border-gray-300">
             Artist
@@ -109,7 +109,7 @@ const Table = ({ handleOnClickView }) => {
         </tr>
       </thead>
       <tbody>
-        {dummyData.map((row, index) => (
+        {data?.map((row, index) => (
           <tr
             key={index}
             className={`${
@@ -118,8 +118,8 @@ const Table = ({ handleOnClickView }) => {
             onMouseEnter={() => setHoveredRow(index)}
             onMouseLeave={() => setHoveredRow(null)}
           >
-            <td className="py-4">{row.artist}</td>
-            <td className="py-4">{row.title}</td>
+            <td className="py-4">{row?.artist_name}</td>
+            <td className="py-4">{row?.title}</td>
 
             <td className="py-4 text-right">
               {hoveredRow === index ? (
@@ -130,7 +130,7 @@ const Table = ({ handleOnClickView }) => {
                   View &#8594;
                 </span>
               ) : (
-                row.date
+                row?.nl_date
               )}
             </td>
           </tr>
