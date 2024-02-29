@@ -9,6 +9,9 @@ import ContactPage from "./pages/ContactPage/ContactPage";
 import ArtistPortfolio from "./pages/ArtistPortfolio/ArtistPortfolio";
 import SingleArt from "./pages/Art/SingleArt";
 import { AnimatePresence } from "framer-motion";
+import { APP_ROUTES } from "./utils/app-routes";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
+import ResetPassword from "./pages/Auth/ResetPassword";
 
 function LocationProvider({ children }) {
   return <AnimatePresence>{children}</AnimatePresence>;
@@ -21,7 +24,9 @@ function RoutesWithAnimation() {
     <Routes location={location} key={location.key}>
       <Route path="/" element={<LoginPage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/recommends" element={<Recommends />} />
+      <Route path={APP_ROUTES.forgot_password} element={<ForgotPassword />} />
+      <Route path={APP_ROUTES.reset_password} element={<ResetPassword />} />
+      <Route path={APP_ROUTES.recommend} element={<Recommends />} />
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/archive" element={<ArchivePage />} />
       <Route path="/contact" element={<ContactPage />} />

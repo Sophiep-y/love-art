@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PublicLayout from "../../components/Layout/PublicLayout";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Logo } from "../../assets/svg";
 import { useForm } from "react-hook-form";
 import { API_END_POINTS } from "../../utils/api-endpoint";
@@ -8,62 +8,64 @@ import { useMutationCreate } from "../../hooks/crud/mutation.create";
 import { USER_DETAILS } from "../../utils/constants";
 import { APP_ROUTES } from "../../utils/app-routes";
 
-const LoginPage = () => {
+const ResetPassword = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isError, setIsError] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState("");
-  const { getValues, register, handleSubmit } = useForm({
+  const { getValues, register, handleSubmit, setValue } = useForm({
     defaultValues: {
+      new_password: "",
+      confirm_password: "",
+      otp: "",
       email: "",
-      password: "",
     },
   });
+  const otp = new URLSearchParams(location.search).get("otp");
+  const email = new URLSearchParams(location.search).get("email");
 
-  const { mutate: login } = useMutationCreate(API_END_POINTS.login);
-
-  const handleLogin = () => {
-    navigate("/recommends");
-  };
+  const { mutate: requestResetPassword } = useMutationCreate(
+    API_END_POINTS.reset_password,
+  );
 
   const onSubmit = handleSubmit((values) => {
-    console.log("values", values);
-    login(values, {
+    requestResetPassword(values, {
       onSuccess(data) {
+        // setIsError(false);
+        // localStorage.setItem(USER_DETAILS, JSON.stringify(data));
+        // navigate(APP_ROUTES.recommend);
         console.log("data", data);
-        setIsError(false);
-        localStorage.setItem(USER_DETAILS, JSON.stringify(data));
-        navigate(APP_ROUTES.recommend);
       },
       onError(error) {
         console.log("error", error?.response?.data?.message);
-        if (error?.response?.data?.error_code === "NEED_PASSWORD_RESET") {
-          navigate(APP_ROUTES.forgot_password);
-        }
-        setIsError(true);
-        setErrorMessage(error?.response?.data?.message);
       },
     });
   });
+
+  useEffect(() => {
+    setValue("otp", otp);
+    setValue("email", email);
+  }, [otp, email]);
   return (
     <PublicLayout>
       <div className="flex w-1/2 justify-between">
         <Logo />
         <span className="uppercase text-6xl text-primary font-extralight">
-          Client Login
+          Client Reset Password
         </span>
       </div>
       <div className="flex flex-col items-center justify-center h-screen">
         <form className="flex flex-col">
           <input
             className="border-solid border-primary border p-2.5 uppercase w-80 text-solidLove"
-            placeholder="Username"
-            {...register("email")}
+            placeholder="New Password"
+            {...register("new_password")}
           />
+
           <input
             className="border-solid border-primary border mt-10 p-2.5 uppercase w-80 text-solidLove"
-            placeholder="password"
-            type={"password"}
-            {...register("password")}
+            placeholder="Confirm New Password"
+            {...register("confirm_password")}
           />
         </form>
         <div className="mt-10">
@@ -71,7 +73,7 @@ const LoginPage = () => {
             onClick={onSubmit}
             className="border border-solid border-black w-80 p-2.5 uppercase text-black"
           >
-            Login
+            Reset Password
           </button>
         </div>
         {isError ? (
@@ -86,4 +88,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ResetPassword;
