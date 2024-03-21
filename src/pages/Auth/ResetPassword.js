@@ -5,7 +5,6 @@ import { Logo } from "../../assets/svg";
 import { useForm } from "react-hook-form";
 import { API_END_POINTS } from "../../utils/api-endpoint";
 import { useMutationCreate } from "../../hooks/crud/mutation.create";
-import { USER_DETAILS } from "../../utils/constants";
 import { APP_ROUTES } from "../../utils/app-routes";
 
 const ResetPassword = () => {
@@ -15,7 +14,7 @@ const ResetPassword = () => {
   const [errorMessage, setErrorMessage] = React.useState("");
   const { getValues, register, handleSubmit, setValue } = useForm({
     defaultValues: {
-      new_password: "",
+      newPassword: "",
       confirm_password: "",
       otp: "",
       email: "",
@@ -35,6 +34,7 @@ const ResetPassword = () => {
         // localStorage.setItem(USER_DETAILS, JSON.stringify(data));
         // navigate(APP_ROUTES.recommend);
         console.log("data", data);
+        navigate(APP_ROUTES.login);
       },
       onError(error) {
         console.log("error", error?.response?.data?.message);
@@ -59,7 +59,7 @@ const ResetPassword = () => {
           <input
             className="border-solid border-primary border p-2.5 uppercase w-80 text-solidLove"
             placeholder="New Password"
-            {...register("new_password")}
+            {...register("newPassword")}
           />
 
           <input

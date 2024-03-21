@@ -66,6 +66,12 @@ const LoginPage = () => {
             {...register("password")}
           />
         </form>
+        <span
+          className={"cursor-pointer text-solidLove"}
+          onClick={() => navigate(APP_ROUTES.forgot_password)}
+        >
+          Forgot Password?
+        </span>
         <div className="mt-10">
           <button
             onClick={onSubmit}
