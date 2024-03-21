@@ -4,7 +4,7 @@ function AnimationLayout({ children }) {
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 w-full h-full origin-top"
+        className="fixed top-0 left-0 w-full h-full origin-top overflow-auto"
         initial={{
           opacity: 0,
         }}

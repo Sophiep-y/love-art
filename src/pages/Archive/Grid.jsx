@@ -45,7 +45,7 @@ const formatDate = (dateString) => {
   const options = { year: "2-digit", month: "2-digit", day: "2-digit" };
   const formattedDate = new Date(dateString).toLocaleDateString(
     "en-US",
-    options,
+    options
   );
 
   // Extracting individual components and joining with dots
@@ -64,7 +64,9 @@ const Grid = ({ data }) => {
         <div
           className={`${
             index > 1 ? "mt-10" : "mt-0"
-          } h-auto w-30% max-w-md mx-auto  bg-white overflow-hidden  ${hoveringItem === item.id ? "grayscale" : ""}  `}
+          } h-auto w-30% max-w-md mx-auto  bg-white overflow-hidden  ${
+            hoveringItem === item.id ? "grayscale" : ""
+          }  `}
           onMouseEnter={() => setHoveringItem(item.id)}
           onMouseLeave={() => setHoveringItem(false)}
         >
@@ -75,7 +77,14 @@ const Grid = ({ data }) => {
             {/*  src={item?.imageUrl}*/}
             {/*  alt="Card Image"*/}
             {/*/>*/}
-            <ImageWithLoading src={item?.imageUrl} alt="Card Image" />
+            <ImageWithLoading
+              src={
+                item?.imageUrl
+                  ? item?.imageUrl
+                  : "https://picsum.photos/400/260"
+              }
+              alt="Card Image"
+            />
           </div>
 
           {/* Title */}
@@ -102,7 +111,9 @@ const Grid = ({ data }) => {
 
           {/* Details */}
           <div
-            className={`flex justify-end items-end py-2  ${hoveringItem === item.id ? "opacity-100" : "opacity-0"} transition-opacity duration-300 ease-in-out cursor-pointer`}
+            className={`flex justify-end items-end py-2  ${
+              hoveringItem === item.id ? "opacity-100" : "opacity-0"
+            } transition-opacity duration-300 ease-in-out cursor-pointer`}
           >
             <p className="text-gray-600 font-semibold" onClick={() => {}}>
               DETAILS &#8594;

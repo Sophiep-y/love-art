@@ -95,12 +95,17 @@ const ArchivePage = () => {
         )}
 
         <div
-          className={`${isMobile ? "mt-5 p-5" : "mt-60 p-5"}  flex justify-between`}
+          className={`${
+            isMobile ? "mt-5 p-5" : "mt-60 p-5"
+          }  flex justify-between`}
         >
           <div>
             {!isMobile && show && (
               <div className="w-1/5 absolute">
-                <ImageWithLoading src={imageSource.imageUrl} alt="Card Image" />
+                <ImageWithLoading
+                  src={"https://picsum.photos/400/260"}
+                  alt="Card Image"
+                />
               </div>
             )}
             <div>
