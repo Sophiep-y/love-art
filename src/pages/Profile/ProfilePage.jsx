@@ -17,7 +17,7 @@ const ProfilePage = () => {
   const [selectedCategory, setSelectedCategory] = useState("Collection");
   const [show, setShow] = useState(false);
   const [imageSource, setImageSource] = useState(null);
-  const [isValueHidden, setIsValueHidden] = useState(false);
+  const [isValueHidden, setIsValueHidden] = useState(true);
 
   const isMobile = useIsMobile();
 
