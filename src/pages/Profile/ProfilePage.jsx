@@ -57,7 +57,7 @@ const ProfilePage = () => {
         pageTitle="Profile"
         noHeader
         footer
-        footer_on_stick={false}
+        footer_on_stick={true}
         className="mb-20"
       >
         <div
@@ -131,7 +131,7 @@ const ProfilePage = () => {
           {!isMobile && <Sidebar icon={<CrossIcon />} fromSidebarNav={true} />}
         </div>
         <div
-          className={` ${isMobile ? "my-8" : "my-60"} p-5 flex justify-between`}
+          className={` ${isMobile ? "my-8" : "my-10"} p-5 flex justify-between`}
         >
           {!isMobile && (
             <div>
