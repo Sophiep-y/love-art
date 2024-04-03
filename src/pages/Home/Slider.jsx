@@ -164,7 +164,7 @@ const ActiveSlider = ({ toggleSidebar }) => {
             spaceBetween: 15,
           },
           800: {
-            slidesPerView: 2.25,
+            slidesPerView: 2,
             spaceBetween: 50,
           },
         }}
