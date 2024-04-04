@@ -157,7 +157,7 @@ const ActiveSlider = ({ toggleSidebar }) => {
       <Swiper
         onSwiper={setSwiper}
         slidesPerView={"auto"}
-        initialSlide={1}
+        initialSlide={0}
         breakpoints={{
           md: {
             slidesPerView: 1,
@@ -165,7 +165,7 @@ const ActiveSlider = ({ toggleSidebar }) => {
           },
           800: {
             slidesPerView: 2,
-            spaceBetween: 50,
+            spaceBetween: 30,
           },
         }}
         freeMode={true}
