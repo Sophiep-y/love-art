@@ -45,7 +45,7 @@ const formatDate = (dateString) => {
   const options = { year: "2-digit", month: "2-digit", day: "2-digit" };
   const formattedDate = new Date(dateString).toLocaleDateString(
     "en-US",
-    options
+    options,
   );
 
   // Extracting individual components and joining with dots
@@ -79,8 +79,11 @@ const Grid = ({ data }) => {
             {/*/>*/}
             <ImageWithLoading
               src={
-                item?.imageUrl
-                  ? item?.imageUrl
+                item?.newsArtworks.imageUrl
+                  ? new URL(
+                      `file/${item.newsArtworks.imageUrl}`,
+                      process.env.REACT_APP_ENDPOINT,
+                    ).toString()
                   : "https://picsum.photos/400/260"
               }
               alt="Card Image"

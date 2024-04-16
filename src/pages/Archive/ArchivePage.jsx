@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PrivateLayout from "../../components/Layout/PrivateLayout";
 import { CrossIcon } from "../../assets/svg/cross-icon";
 import Table from "./Table";
@@ -13,19 +13,22 @@ import { useDataQuery } from "../../hooks/crud/data.query";
 import { API_END_POINTS } from "../../utils/api-endpoint";
 
 const ArchivePage = () => {
+  const [page, setPage] = useState(1);
+
   const [selected, setSelected] = useState("Grid");
   const [selectedCategory, setSelectedCategory] = useState("Collection");
 
   const [show, setShow] = useState(false);
   const [imageSource, setImageSource] = useState(null);
 
-  const { data: archivesList } = useDataQuery({
+  const { data: archivesList, refetch } = useDataQuery({
     url: API_END_POINTS.archives,
     params: {
-      limit: 20,
-      page: 1,
+      limit: 10,
+      page: page,
     },
   });
+
   console.log("archivesList", archivesList);
 
   const isMobile = useIsMobile();
@@ -52,6 +55,11 @@ const ArchivePage = () => {
   const handleSelectedCategory = (value) => {
     setSelectedCategory(value);
   };
+
+  const handleLoadMore = () => {
+    setPage(page + 1);
+  };
+
   return (
     <AnimationLayout>
       <PrivateLayout
@@ -146,7 +154,9 @@ const ArchivePage = () => {
             )}
 
             <div className="flex justify-between text-primary text-2xl cursor-pointer px-2.5 uppercase my-10">
-              <button className=" hover:text-black">&#x2B; Load More</button>
+              <button onClick={handleLoadMore} className=" hover:text-black">
+                &#x2B; Load More
+              </button>
               <button
                 className=" hover:text-black"
                 onClick={() => {
