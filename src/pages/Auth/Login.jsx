@@ -22,7 +22,7 @@ const LoginPage = () => {
   const { mutate: login } = useMutationCreate(API_END_POINTS.login);
 
   const handleLogin = () => {
-    navigate("/recommends");
+    navigate(APP_ROUTES.recommend);
   };
 
   const onSubmit = handleSubmit((values) => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PrivateLayout from "../../components/Layout/PrivateLayout";
 import { CrossIcon } from "../../assets/svg/cross-icon";
 import Table from "./Table";
@@ -11,13 +11,12 @@ import DropdownOption from "../../components/Dropdown/DropdownOption";
 import AnimationLayout from "../../components/AnimationLayout/AnimationLayout";
 import { useDataQuery } from "../../hooks/crud/data.query";
 import { API_END_POINTS } from "../../utils/api-endpoint";
+import placeholder from "../../assets/place-holder.jpg";
 
 const ArchivePage = () => {
   const [page, setPage] = useState(1);
 
   const [selected, setSelected] = useState("Grid");
-  const [selectedCategory, setSelectedCategory] = useState("Collection");
-
   const [show, setShow] = useState(false);
   const [imageSource, setImageSource] = useState(null);
 
@@ -40,10 +39,11 @@ const ArchivePage = () => {
       setImageSource(null);
       return;
     }
+    console.log(row);
 
     setShow(true);
     setImageSource({
-      imageUrl: row?.imageUrl,
+      imageUrl: row?.newsArtworks.imageUrl,
       id: row?.id,
     });
   };
@@ -52,12 +52,9 @@ const ArchivePage = () => {
     setSelected(value);
   };
 
-  const handleSelectedCategory = (value) => {
-    setSelectedCategory(value);
-  };
-
   const handleLoadMore = () => {
     setPage(page + 1);
+    refetch();
   };
 
   return (
@@ -111,7 +108,14 @@ const ArchivePage = () => {
             {!isMobile && show && (
               <div className="w-1/5 absolute">
                 <ImageWithLoading
-                  src={"https://picsum.photos/400/260"}
+                  src={
+                    imageSource.imageUrl
+                      ? new URL(
+                          `file/${imageSource.imageUrl}`,
+                          process.env.REACT_APP_ENDPOINT,
+                        ).toString()
+                      : placeholder
+                  }
                   alt="Card Image"
                 />
               </div>

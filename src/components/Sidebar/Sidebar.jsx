@@ -4,6 +4,7 @@ import { Footer } from "../Footer/Footer";
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { HamburgerIcon } from "../../assets/svg";
+import { APP_ROUTES } from "../../utils/app-routes";
 
 const SideBar = ({ icon, fromSidebarNav, className }) => {
   const navigate = useNavigate();
@@ -54,7 +55,7 @@ const SideBar = ({ icon, fromSidebarNav, className }) => {
       if (isSidebarNavigation) {
         setIsSidebarCollapsed(true);
         setTimeout(() => {
-          navigate("/recommends");
+          navigate(APP_ROUTES.recommend);
         }, 300);
       } else {
         if (fromSidebarNav) {
