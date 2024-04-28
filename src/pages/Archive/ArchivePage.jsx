@@ -106,15 +106,13 @@ const ArchivePage = () => {
           <div>
             {!isMobile && show && (
               <div className="w-1/5 absolute">
-                imageSource.imageUrl?{" "}
                 <ImageWithLoading
                   src={new URL(
                     `file/${imageSource.imageUrl}`,
                     process.env.REACT_APP_ENDPOINT,
                   ).toString()}
                   alt="Card Image"
-                />{" "}
-                :<div>\ No Image Available</div>
+                />
               </div>
             )}
             <div>

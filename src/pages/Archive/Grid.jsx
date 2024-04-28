@@ -2,45 +2,6 @@ import React, { useState } from "react";
 import ImageWithLoading from "../../components/Image/image";
 import { useNavigate } from "react-router-dom";
 
-const dummyData = [
-  {
-    id: 1,
-    artist: "Artist 1",
-    title: "Title 1",
-    costAud: 50,
-    valueAud: 100,
-    imageUrl: "https://picsum.photos/400/259",
-    date: "2021-01-01",
-  },
-  {
-    id: 2,
-    artist: "Artist 2",
-    title: "Title 2",
-    costAud: 60,
-    valueAud: 120,
-    imageUrl: "https://picsum.photos/400/260",
-    date: "2021-01-01",
-  },
-  {
-    id: 3,
-    artist: "Artist 3",
-    title: "Title 3",
-    costAud: 70,
-    valueAud: 140,
-    imageUrl: "https://picsum.photos/400/261",
-    date: "2021-01-01",
-  },
-  {
-    id: 4,
-    artist: "Artist 3",
-    title: "Title 3",
-    costAud: 70,
-    valueAud: 140,
-    imageUrl: "https://picsum.photos/400/258",
-    date: "2021-01-01",
-  },
-];
-
 const formatDate = (dateString) => {
   const options = { year: "2-digit", month: "2-digit", day: "2-digit" };
   const formattedDate = new Date(dateString).toLocaleDateString(
@@ -118,7 +79,14 @@ const Grid = ({ data }) => {
               hoveringItem === item.id ? "opacity-100" : "opacity-0"
             } transition-opacity duration-300 ease-in-out cursor-pointer`}
           >
-            <p className="text-gray-600 font-semibold" onClick={() => {}}>
+            <p
+              className="text-gray-600 font-semibold"
+              onClick={() => {
+                console.log(item);
+
+                navigate(`/artist/${item.id}`);
+              }}
+            >
               DETAILS &#8594;
             </p>
           </div>
