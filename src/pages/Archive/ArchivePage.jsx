@@ -11,7 +11,6 @@ import DropdownOption from "../../components/Dropdown/DropdownOption";
 import AnimationLayout from "../../components/AnimationLayout/AnimationLayout";
 import { useDataQuery } from "../../hooks/crud/data.query";
 import { API_END_POINTS } from "../../utils/api-endpoint";
-import placeholder from "../../assets/place-holder.jpg";
 
 const ArchivePage = () => {
   const [page, setPage] = useState(1);
@@ -107,17 +106,15 @@ const ArchivePage = () => {
           <div>
             {!isMobile && show && (
               <div className="w-1/5 absolute">
+                imageSource.imageUrl?{" "}
                 <ImageWithLoading
-                  src={
-                    imageSource.imageUrl
-                      ? new URL(
-                          `file/${imageSource.imageUrl}`,
-                          process.env.REACT_APP_ENDPOINT,
-                        ).toString()
-                      : placeholder
-                  }
+                  src={new URL(
+                    `file/${imageSource.imageUrl}`,
+                    process.env.REACT_APP_ENDPOINT,
+                  ).toString()}
                   alt="Card Image"
-                />
+                />{" "}
+                :<div>\ No Image Available</div>
               </div>
             )}
             <div>

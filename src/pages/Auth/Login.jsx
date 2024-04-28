@@ -14,7 +14,7 @@ const LoginPage = () => {
   const [errorMessage, setErrorMessage] = React.useState("");
   const { getValues, register, handleSubmit } = useForm({
     defaultValues: {
-      email: "",
+      username: "",
       password: "",
     },
   });
@@ -57,7 +57,7 @@ const LoginPage = () => {
           <input
             className="border-solid border-primary border p-2.5 uppercase w-80 text-solidLove"
             placeholder="Username"
-            {...register("email")}
+            {...register("username")}
           />
           <input
             className="border-solid border-primary border mt-10 p-2.5 uppercase w-80 text-solidLove"
