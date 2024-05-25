@@ -17,7 +17,10 @@ const ArtCard = ({ art, index, navigateToArt = true, toggleSidebar }) => {
       {/* Image */}
       <div className=" w-30% shadow-recommendation">
         <ImageWithLoading
-          src={"https://picsum.photos/400/500"}
+          src={new URL(
+            `file/artworks/${art.image_url}`,
+            process.env.REACT_APP_ENDPOINT,
+          ).toString()}
           alt="Card Image"
         />
       </div>
